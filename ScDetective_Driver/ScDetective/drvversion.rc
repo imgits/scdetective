@@ -43,12 +43,12 @@ BEGIN
     BEGIN
         BLOCK "000004b0"
         BEGIN
-            VALUE "Author", "JuniorSun"
+            VALUE "Author", "kedebug"
             VALUE "FileVersion", "1.0.0.1"
             VALUE "InternalName", "ScDetective.sys"
             VALUE "OriginalFilename", "ScDetective"
             VALUE "ProductVersion", "0, 0, 0, 0"
-            VALUE "Website", "http://hi.baidu.com/m_sunv"
+            VALUE "Website", "http://www.cnblogs.com/kedebug"
         END
     END
     BLOCK "VarFileInfo"
@@ -62,7 +62,7 @@ END
 
 
 /////////////////////////////////////////////////////////////////////////////
-// 中文(中华人民共和国) resources
+// 中文(中华人民共和�? resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -93,7 +93,7 @@ END
 
 #endif    // APSTUDIO_INVOKED
 
-#endif    // 中文(中华人民共和国) resources
+#endif    // 中文(中华人民共和�? resources
 /////////////////////////////////////////////////////////////////////////////
 
 

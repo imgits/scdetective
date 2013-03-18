@@ -1,11 +1,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 ///
-/// Copyright (c) 2010 - CSU_SUN
+/// Copyright (c) 2010 - kedebug
 ///
 /// Original filename: ScDetective.cpp
 /// Project          : ScDetective
 /// Date of creation : 2010-10-16
-/// Author(s)        : JuniorSun(CSU)
+/// Author(s)        : kedebug(SJTU)
 ///
 /// Purpose          : Only for study
 ///
@@ -143,11 +143,11 @@ NTSTATUS ScDetective_DispatchDeviceControl(
 
                 if (cbInputBuffer < sizeof(SSDT_ADDRESS) || 
                     InputBuffer == NULL) {
-                    KdPrint(("输入缓冲区或输入缓冲区长度无效"));
+                    KdPrint(("输入缓冲区或输入缓冲区长度无�?));
                     ntStatus = STATUS_UNSUCCESSFUL;
                     break;
                 }
-                KdPrint(("要恢复的服务号：%d 原始地址：0x%X", 
+                KdPrint(("要恢复的服务号：%d 原始地址�?x%X", 
                     SsdtOrig->nIndex, SsdtOrig->FunAddress));
 
                 if (!UnHookSsdtItem(SsdtOrig)) {
@@ -184,10 +184,10 @@ NTSTATUS ScDetective_DispatchDeviceControl(
 
                 if (cbInputBuffer < sizeof(SSDT_ADDRESS) || 
                     InputBuffer == NULL) {
-                    KdPrint(("输入缓冲区或输入缓冲区长度无效"));
+                    KdPrint(("输入缓冲区或输入缓冲区长度无�?));
                     ntStatus = STATUS_UNSUCCESSFUL;  break;
                 }
-                KdPrint(("要恢复的服务号：%d 原始地址：0x%X", 
+                KdPrint(("要恢复的服务号：%d 原始地址�?x%X", 
                     ShadowSsdtOrig->nIndex, ShadowSsdtOrig->FunAddress));
 
                 if (!UnHookShadowSsdtItem(ShadowSsdtOrig, g_CsrssProcess)) {
