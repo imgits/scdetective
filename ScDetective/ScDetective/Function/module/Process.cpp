@@ -27,7 +27,7 @@ VOID Convert2DosDeviceName(PTSTR pszSource, PTSTR pszDest, int cbszDest)
             return;
         }
     }
-    // 若不成功，则使用设备路径
+    // 鑻ヤ笉鎴愬姛锛屽垯浣跨敤璁惧璺緞
     lstrcpy(pszDest, pszSource);
 }
 

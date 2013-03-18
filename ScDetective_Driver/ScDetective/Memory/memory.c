@@ -121,7 +121,7 @@ VOID InitializeMemoryValue(VOID)
     PKDDEBUGGER_DATA64 DebuggerData = NULL;
     ULONG Time = 4;     // Only try 4 times
 
-    // ¶àºË idt hook Ò²²ÉÓÃÁËÀàËÆµÄ·½·¨
+    // å¤šæ ¸ idt hook ä¹Ÿé‡‡ç”¨äº†ç±»ä¼¼çš„æ–¹æ³•
 _retry:
     KeSetSystemAffinityThread(1);
     __asm {

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////
-// Driver.hÎÄ¼þ
+// Driver.hæ–‡ä»¶
 
 #pragma once
 
@@ -11,38 +11,38 @@ public:
     VOID LoadDriver(LPCTSTR pszDriverName, LPCTSTR pszLinkName);
     VOID UnloadDriver();
 
-    // ¹¹Ôìº¯Êý£¬pszDriverPathÎªÇý¶¯ËùÔÚÄ¿Â¼£¬pszLinkNameÎª·ûºÅÁ¬½ÓÃû×Ö
-    // ÔÚÀàµÄ¹¹Ôìº¯ÊýÖÐ£¬½«ÊÔÍ¼´´½¨»ò´ò¿ª·þÎñ£¬
+    // æž„é€ å‡½æ•°ï¼ŒpszDriverPathä¸ºé©±åŠ¨æ‰€åœ¨ç›®å½•ï¼ŒpszLinkNameä¸ºç¬¦å·è¿žæŽ¥åå­—
+    // åœ¨ç±»çš„æž„é€ å‡½æ•°ä¸­ï¼Œå°†è¯•å›¾åˆ›å»ºæˆ–æ‰“å¼€æœåŠ¡ï¼Œ
     BOOL DoCDriver(LPCTSTR pszDriverPath, LPCTSTR pszLinkName);
-    // Îö¹¹º¯Êý¡£ÔÚÕâÀï£¬½«Í£Ö¹·þÎñ£¬
+    // æžæž„å‡½æ•°ã€‚åœ¨è¿™é‡Œï¼Œå°†åœæ­¢æœåŠ¡ï¼Œ
     VOID UnDoCDriver();
 
-    // ÊôÐÔ
-    // ´ËÇý¶¯ÊÇ·ñ¿ÉÓÃ
+    // å±žæ€§
+    // æ­¤é©±åŠ¨æ˜¯å¦å¯ç”¨
     BOOL IsValid() { return (m_hSCM != NULL && m_hService != NULL); }
 
-    // ²Ù×÷
-    // ¿ªÆô·þÎñ¡£Ò²¾ÍÊÇËµÇý¶¯µÄDriverEntryº¯Êý½«±»µ÷ÓÃ
+    // æ“ä½œ
+    // å¼€å¯æœåŠ¡ã€‚ä¹Ÿå°±æ˜¯è¯´é©±åŠ¨çš„DriverEntryå‡½æ•°å°†è¢«è°ƒç”¨
     BOOL StartDriver();
-    // ½áÊø·þÎñ¡£¼´Çý¶¯³ÌÐòµÄDriverUnloadÀý³Ì½«±»µ÷ÓÃ
+    // ç»“æŸæœåŠ¡ã€‚å³é©±åŠ¨ç¨‹åºçš„DriverUnloadä¾‹ç¨‹å°†è¢«è°ƒç”¨
     BOOL StopDriver();
 
-    // ´ò¿ªÉè±¸£¬¼´È¡µÃµ½´ËÇý¶¯µÄÒ»¸ö¾ä±ú
+    // æ‰“å¼€è®¾å¤‡ï¼Œå³å–å¾—åˆ°æ­¤é©±åŠ¨çš„ä¸€ä¸ªå¥æŸ„
     BOOL OpenDevice();
 
-    // ÏòÉè±¸·¢ËÍ¿ØÖÆ´úÂë
+    // å‘è®¾å¤‡å‘é€æŽ§åˆ¶ä»£ç 
     DWORD IoControl(DWORD nCode, PVOID pInBuffer, 
                     DWORD nInCount, PVOID pOutBuffer, DWORD nOutCount);
-    // ÊµÏÖ
-    WCHAR m_szLinkName[56];	// ·ûºÅÁ¬½ÓÃû³Æ
+    // å®žçŽ°
+    WCHAR m_szLinkName[56];	// ç¬¦å·è¿žæŽ¥åç§°
 
-    BOOL  m_bStarted;	        // Ö¸¶¨·þÎñÊÇ·ñÆô¶¯
-    BOOL  m_bCreateService;	// Ö¸¶¨ÊÇ·ñ´´½¨ÁË·þÎñ
+    BOOL  m_bStarted;	        // æŒ‡å®šæœåŠ¡æ˜¯å¦å¯åŠ¨
+    BOOL  m_bCreateService;	// æŒ‡å®šæ˜¯å¦åˆ›å»ºäº†æœåŠ¡
 
-    SC_HANDLE  m_hSCM;		// SCMÊý¾Ý¿â¾ä±ú
-    SC_HANDLE  m_hService;	// ·þÎñ¾ä±ú
+    SC_HANDLE  m_hSCM;		// SCMæ•°æ®åº“å¥æŸ„
+    SC_HANDLE  m_hService;	// æœåŠ¡å¥æŸ„
 
-    HANDLE m_hDriver;	    // Éè±¸¾ä±ú
+    HANDLE m_hDriver;	    // è®¾å¤‡å¥æŸ„
 };
 
 extern CDriver theDriver;

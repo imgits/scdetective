@@ -1,4 +1,4 @@
-// PageFile.cpp : ÊµÏÖÎÄ¼ş
+// PageFile.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -7,7 +7,7 @@
 
 extern CDriver theDriver;
 extern CStatic* theStatus;
-// CPageFile ¶Ô»°¿ò
+// CPageFile å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CPageFile, CDialog)
 
@@ -35,19 +35,19 @@ BEGIN_MESSAGE_MAP(CPageFile, CDialog)
 END_MESSAGE_MAP()
 
 
-// CPageFile ÏûÏ¢´¦Àí³ÌĞò
+// CPageFile æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CPageFile::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
     m_ListFile.SetExtendedStyle(m_ListFile.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListFile.InsertColumn( 0, L"ÎÄ¼şÃû",   LVCFMT_LEFT, 150, -1);
-    m_ListFile.InsertColumn( 1, L"´óĞ¡",     LVCFMT_LEFT, 80, -1);
-    m_ListFile.InsertColumn( 2, L"Õ¼ÓÃ¿Õ¼ä", LVCFMT_LEFT, 80, -1);
-    m_ListFile.InsertColumn( 3, L"´´½¨Ê±¼ä", LVCFMT_LEFT, 80, -1);
-    m_ListFile.InsertColumn( 4, L"ĞŞ¸ÄÊ±¼ä", LVCFMT_LEFT, 80, -1);  
-    m_ListFile.InsertColumn( 5, L"³£¹æÊôĞÔ", LVCFMT_CENTER, 80, -1);
+    m_ListFile.InsertColumn( 0, L"æ–‡ä»¶å",   LVCFMT_LEFT, 150, -1);
+    m_ListFile.InsertColumn( 1, L"å¤§å°",     LVCFMT_LEFT, 80, -1);
+    m_ListFile.InsertColumn( 2, L"å ç”¨ç©ºé—´", LVCFMT_LEFT, 80, -1);
+    m_ListFile.InsertColumn( 3, L"åˆ›å»ºæ—¶é—´", LVCFMT_LEFT, 80, -1);
+    m_ListFile.InsertColumn( 4, L"ä¿®æ”¹æ—¶é—´", LVCFMT_LEFT, 80, -1);  
+    m_ListFile.InsertColumn( 5, L"å¸¸è§„å±æ€§", LVCFMT_CENTER, 80, -1);
 
     m_ImageList.Create(18, 18, ILC_COLOR32, 10, 1024);
     m_ImageList.Add(LoadIcon(AfxGetInstanceHandle(), MAKEINTRESOURCE(IDI_MYPC)));
@@ -64,7 +64,7 @@ BOOL CPageFile::OnInitDialog()
     ULONG IconIndex;
     CString NameString;
 
-    m_hRoot = m_TreeFile.InsertItem(L"ÎÒµÄµçÄÔ", 0, 0);
+    m_hRoot = m_TreeFile.InsertItem(L"æˆ‘çš„ç”µè„‘", 0, 0);
     GetLogicalDriveStrings(260, Buffer);
 
     for (; szDrives[0]; szDrives = szDrives + wcslen(szDrives) + 1)
@@ -72,28 +72,28 @@ BOOL CPageFile::OnInitDialog()
         switch (GetDriveType(szDrives))
         {
         case DRIVE_REMOVABLE:
-            NameString = L"¿ÉÒÆ¶¯´ÅÅÌ(";
+            NameString = L"å¯ç§»åŠ¨ç£ç›˜(";
             NameString += szDrives;
             NameString.Delete(NameString.GetLength() - 1, 1);
             NameString += L")";
             IconIndex = 1;
             break;
         case DRIVE_FIXED:
-            NameString = L"±¾µØ´ÅÅÌ(";
+            NameString = L"æœ¬åœ°ç£ç›˜(";
             NameString += szDrives;
             NameString.Delete(NameString.GetLength() - 1, 1);
             NameString += L")";
             IconIndex = 2;
             break;
         case DRIVE_REMOTE:
-            NameString = L"ÍøÂç´ÅÅÌ(";
+            NameString = L"ç½‘ç»œç£ç›˜(";
             NameString += szDrives;
             NameString.Delete(NameString.GetLength() - 1, 1);
             NameString += L")";
             IconIndex = 3;
             break;
         case DRIVE_CDROM:
-            NameString = L"¹âÇı(";
+            NameString = L"å…‰é©±(";
             NameString += szDrives;
             NameString.Delete(NameString.GetLength() - 1, 1);
             NameString += L")";

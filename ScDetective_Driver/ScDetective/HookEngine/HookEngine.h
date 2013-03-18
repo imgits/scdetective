@@ -48,25 +48,25 @@ typedef struct _DPC_CONTEXT {
 
 BOOL  bAlreadyHooked = FALSE;
 
-// ��Ҫ hook �ĺ�������
+// 需要 hook 的函数数量
 ULONG NumberOfHookedFunction;
 
-// ���ڱ�ʶ�����Ƿ� hook
+// 用于标识函数是否被 hook
 UCHAR HookFlags[PREPARE_HOOK_NUMBER];
 
-// ���ڱ�ʾ�����ǵ���ʵ��ַ��ַ
+// 用于表示被覆盖的其实地址地址
 ULONG CoverStartAddress[PREPARE_HOOK_NUMBER];
 
-// ���ڱ�ʶ���������ǵ��ֽ���
+// 用于标识函数被覆盖的字节数
 ULONG CoverLength[PREPARE_HOOK_NUMBER];
 
-// ���ڴ�ź��������ǵ��ֽ�, Ϊÿ�������ṩ 32 ���ֽ�
+// 用于存放函数被覆盖的字节, 为每个函数提供 32 个字节
 UCHAR OrigOpCode[PREPARE_HOOK_NUMBER][32];
 
-// ԭʼ������ַ����
+// 原始函数地址数组
 ADDRESS_TABLE OrigAddressTable;
 
-// �Լ��ṩ�ĺ�����ַ����
+// 自己提供的函数地址数组
 ADDRESS_TABLE fakeAddressTable;
 
 //////////////////////////////////////////////////////////////////////////
@@ -107,5 +107,5 @@ UnInlineHookNativeApi(
 #endif
 
 //
-// 2011/4/28���� KiInsertQueueApc ���������˸о��ܴ죬ͨ���Բ���
+// 2011/4/28添加 KiInsertQueueApc 保护，个人感觉很挫，通用性不好
 //

@@ -1,4 +1,4 @@
-// Page1.cpp : ÊµÏÖÎÄ¼ş
+// Page1.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -9,7 +9,7 @@
 extern CDriver theDriver;
 extern CStatic* theStatus;
 
-// CPage1 ¶Ô»°¿ò
+// CPage1 å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CPage1, CDialog)
 
@@ -50,25 +50,25 @@ BEGIN_MESSAGE_MAP(CPage1, CDialog)
 END_MESSAGE_MAP()
 
 
-// CPage1 ÏûÏ¢´¦Àí³ÌĞò
+// CPage1 æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CPage1::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
-    // TODO:  ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯
+    // TODO:  åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–
     m_ListSsdt.SetExtendedStyle(m_ListSsdt.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListSsdt.InsertColumn( 0, L"·şÎñºÅ",     LVCFMT_CENTER, 60, -1);
-    m_ListSsdt.InsertColumn( 1, L"·şÎñº¯ÊıÃû", LVCFMT_LEFT, 170, -1);
-    m_ListSsdt.InsertColumn( 2, L"µ±Ç°µØÖ·",   LVCFMT_CENTER, 100, -1);
+    m_ListSsdt.InsertColumn( 0, L"æœåŠ¡å·",     LVCFMT_CENTER, 60, -1);
+    m_ListSsdt.InsertColumn( 1, L"æœåŠ¡å‡½æ•°å", LVCFMT_LEFT, 170, -1);
+    m_ListSsdt.InsertColumn( 2, L"å½“å‰åœ°å€",   LVCFMT_CENTER, 100, -1);
     m_ListSsdt.InsertColumn( 3, L"Hook",      LVCFMT_CENTER, 80, -1);
-    m_ListSsdt.InsertColumn( 4, L"Ô­Ê¼µØÖ·",   LVCFMT_CENTER, 100, -1);  
-    m_ListSsdt.InsertColumn( 5, L"Ä£¿éÃû",     LVCFMT_LEFT, 250, -1);
+    m_ListSsdt.InsertColumn( 4, L"åŸå§‹åœ°å€",   LVCFMT_CENTER, 100, -1);  
+    m_ListSsdt.InsertColumn( 5, L"æ¨¡å—å",     LVCFMT_LEFT, 250, -1);
     
     OnMenuRefresh();
 
     return TRUE;  // return TRUE unless you set the focus to a control
-    // Òì³£: OCX ÊôĞÔÒ³Ó¦·µ»Ø FALSE
+    // å¼‚å¸¸: OCX å±æ€§é¡µåº”è¿”å› FALSE
 }
 
 void CPage1::OnMenuRefresh()
@@ -117,7 +117,7 @@ void CPage1::OnMenuRefresh()
         if (pSsdtName != NULL) {
             lstrcpyA(SsdtInfo.FunName, pSsdtName[i].FunName);
         } else {
-            lstrcpyA(SsdtInfo.FunName, "Î´Öªº¯Êı");
+            lstrcpyA(SsdtInfo.FunName, "æœªçŸ¥å‡½æ•°");
         }
 
         char szPath[MAX_PATH] = { 0 };
@@ -155,7 +155,7 @@ void CPage1::OnMenuRefresh()
             m_ListSsdt.SetItemText(nItemNum, 3, L"-");
         }
     }
-    wsprintf(StatusBuffer, L"ssdt º¯Êı :: %d - ±»¹Ò¹³º¯Êı :: %d", NumOfNativeAddress, nChanged);
+    wsprintf(StatusBuffer, L"ssdt å‡½æ•° :: %d - è¢«æŒ‚é’©å‡½æ•° :: %d", NumOfNativeAddress, nChanged);
     theStatus->SetWindowText(StatusBuffer);
 
     GlobalFree(pCurrentSsdtAddr);
@@ -164,7 +164,7 @@ void CPage1::OnMenuRefresh()
 void CPage1::OnNMRClickListSsdt(NMHDR *pNMHDR, LRESULT *pResult)
 {
     LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-    // TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
     NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
     if (pNMListView->iItem != -1 && pNMListView->iSubItem != -1)
     {
@@ -212,24 +212,24 @@ theEnd:
 
 void CPage1::OnMenuSsdtUnhookAll()
 {
-    // TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 }
 
 void CPage1::OnMenuShowAttribute()
 {
-    // TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 }
 
 void CPage1::OnMenuLocateToFile()
 {
-    // TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 }
 
 void CPage1::OnNMCustomdrawSsdtListColor(NMHDR *pNMHDR, LRESULT *pResult)
 {
     NMLVCUSTOMDRAW* pLVCD = reinterpret_cast<NMLVCUSTOMDRAW*>( pNMHDR );
 
-    // TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
     *pResult = CDRF_DODEFAULT;;
 
     if ( CDDS_PREPAINT == pLVCD->nmcd.dwDrawStage )
@@ -241,17 +241,17 @@ void CPage1::OnNMCustomdrawSsdtListColor(NMHDR *pNMHDR, LRESULT *pResult)
         COLORREF clrNewTextColor, clrNewBkColor;
         int nItem = static_cast<int>( pLVCD->nmcd.dwItemSpec);
 
-        //Èç¹ûµ±Ç°SSDTµØÖ·ÓëÔ­Ê¼µØÖ·²»Ò»Ñù,ÔòÏÔÊ¾×ÖÌåÎªºìÉ«,·ñÔòÎªºÚÉ«
-        if(pSsdtNativeAddress[nItem] != SsdtCurrentAddress[nItem])    //ÉèÖÃÎªºìÉ«
+        //å¦‚æœå½“å‰SSDTåœ°å€ä¸åŸå§‹åœ°å€ä¸ä¸€æ ·,åˆ™æ˜¾ç¤ºå­—ä½“ä¸ºçº¢è‰²,å¦åˆ™ä¸ºé»‘è‰²
+        if(pSsdtNativeAddress[nItem] != SsdtCurrentAddress[nItem])    //è®¾ç½®ä¸ºçº¢è‰²
             clrNewTextColor = RGB(255, 0, 0);
-        else		//ÉèÖÃÎªºÚÉ«
+        else		//è®¾ç½®ä¸ºé»‘è‰²
             clrNewTextColor = RGB(0, 0, 0);
 
-        //ÉèÖÃ±³¾°É«
+        //è®¾ç½®èƒŒæ™¯è‰²
         if( nItem % 2 == 0)
-            clrNewBkColor = RGB(240, 240, 240);	    //Å¼ÊıĞĞ±³¾°É«Îª»ÒÉ«
+            clrNewBkColor = RGB(240, 240, 240);	    //å¶æ•°è¡ŒèƒŒæ™¯è‰²ä¸ºç°è‰²
         else
-            clrNewBkColor = RGB(255, 255, 255);	    //ÆæÊıĞĞ±³¾°É«Îª°×É«
+            clrNewBkColor = RGB(255, 255, 255);	    //å¥‡æ•°è¡ŒèƒŒæ™¯è‰²ä¸ºç™½è‰²
 
         pLVCD->clrText = clrNewTextColor;
         pLVCD->clrTextBk = clrNewBkColor;
@@ -264,6 +264,6 @@ void CPage1::OnShowWindow(BOOL bShow, UINT nStatus)
 {
     CDialog::OnShowWindow(bShow, nStatus);
 
-    // TODO: ÔÚ´Ë´¦Ìí¼ÓÏûÏ¢´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤å¤„æ·»åŠ æ¶ˆæ¯å¤„ç†ç¨‹åºä»£ç 
     theStatus->SetWindowText(StatusBuffer);
 }

@@ -3,9 +3,9 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
-//	¹¦ÄÜÊµÏÖ£ºÅĞ¶Ïµ±Ç°²Ù×÷ÏµÍ³°æ±¾
-//	ÊäÈë²ÎÊı£ºÎŞ
-//	Êä³ö²ÎÊı£ºÊä³ö²ÎÊı·µ»Øº¯ÊıÉùÃ÷´¦¶¨ÒåµÄºê
+//	åŠŸèƒ½å®ç°ï¼šåˆ¤æ–­å½“å‰æ“ä½œç³»ç»Ÿç‰ˆæœ¬
+//	è¾“å…¥å‚æ•°ï¼šæ— 
+//	è¾“å‡ºå‚æ•°ï¼šè¾“å‡ºå‚æ•°è¿”å›å‡½æ•°å£°æ˜å¤„å®šä¹‰çš„å®
 //
 ///////////////////////////////////////////////////////////////////////////////////
 WORD 
@@ -14,23 +14,23 @@ GetCurrentOSVersion()
     OSVERSIONINFOEX	osVersion;
     BOOL	bStatus=FALSE;
 
-    //»ñÈ¡²Ù×÷ÏµÍ³°æ±¾
+    //è·å–æ“ä½œç³»ç»Ÿç‰ˆæœ¬
     osVersion.dwOSVersionInfoSize=sizeof(OSVERSIONINFOEX);
     bStatus=GetVersionEx((OSVERSIONINFO*)&osVersion);
     if(!bStatus)
     {
-        TRACE0("[GetCurrentOSVersion] »ñÈ¡²Ù×÷ÏµÍ³°æ±¾Ê§°Ü!");
+        TRACE0("[GetCurrentOSVersion] è·å–æ“ä½œç³»ç»Ÿç‰ˆæœ¬å¤±è´¥!");
         return VER_GET_ERROR;
     }
 
-    //È·¶¨ÊÇNTÏµÍ³
+    //ç¡®å®šæ˜¯NTç³»ç»Ÿ
     if(VER_PLATFORM_WIN32_NT!=osVersion.dwPlatformId)
     {
-        TRACE0("[GetCurrentOSVersion] ²»Ö§³Ö·ÇNTµÄWindows°æ±¾");
+        TRACE0("[GetCurrentOSVersion] ä¸æ”¯æŒéNTçš„Windowsç‰ˆæœ¬");
         return VER_UNSUPPORT;
     }
 
-    //ÅĞ¶ÏÊÇÄÄ¸ö²Ù×÷ÏµÍ³ÀàĞÍ
+    //åˆ¤æ–­æ˜¯å“ªä¸ªæ“ä½œç³»ç»Ÿç±»å‹
     switch (osVersion.dwMajorVersion)
     {
     case 5:
@@ -43,7 +43,7 @@ GetCurrentOSVersion()
                     {
                     case 0:
                         {
-                            TRACE0("[GetCurrentOSVersion] Windows XPÆÕÍ¨°æ±¾");
+                            TRACE0("[GetCurrentOSVersion] Windows XPæ™®é€šç‰ˆæœ¬");
                             return VER_WINXP;
                         }
                     case 1:
@@ -66,7 +66,7 @@ GetCurrentOSVersion()
                         }
                     default:
                         {
-                            TRACE0("[GetCurrentOSVersion]  Windows 5.1 SPXXXX ²»Ö§³Ö");
+                            TRACE0("[GetCurrentOSVersion]  Windows 5.1 SPXXXX ä¸æ”¯æŒ");
                             return VER_UNSUPPORT;
                         }
                     }
@@ -77,8 +77,8 @@ GetCurrentOSVersion()
                     {
                     case 0:
                         {
-                            //2003ÆÕÍ¨°æ±¾
-                            TRACE0("[GetCurrentOSVersion]  Windows 2003 ÆÕÍ¨°æ±¾");
+                            //2003æ™®é€šç‰ˆæœ¬
+                            TRACE0("[GetCurrentOSVersion]  Windows 2003 æ™®é€šç‰ˆæœ¬");
                             return VER_W2K3;
                         }
                     case 1:
@@ -95,7 +95,7 @@ GetCurrentOSVersion()
                         }
                     default:
                         {
-                            TRACE0("[GetCurrentOSVersion]  Windows 2003 5.2 SPXXXX ²»Ö§³Ö");
+                            TRACE0("[GetCurrentOSVersion]  Windows 2003 5.2 SPXXXX ä¸æ”¯æŒ");
                             break;
                         }
                     }
@@ -126,7 +126,7 @@ GetCurrentOSVersion()
                         }
                     default:
                         {
-                            TRACE0("[GetCurrentOSVersion]  Windows Vista 6.0 SPXXXX ²»Ö§³Ö");
+                            TRACE0("[GetCurrentOSVersion]  Windows Vista 6.0 SPXXXX ä¸æ”¯æŒ");
                             return VER_UNSUPPORT;
                         }
                     }
@@ -139,7 +139,7 @@ GetCurrentOSVersion()
                 }
             default:
                 {
-                    TRACE0("[GetCurrentOSVersion]  Windows Vista 6.XXXX ²»Ö§³Ö");
+                    TRACE0("[GetCurrentOSVersion]  Windows Vista 6.XXXX ä¸æ”¯æŒ");
                     return VER_UNSUPPORT;
                 }
             }

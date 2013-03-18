@@ -156,7 +156,7 @@ BOOLEAN InitAddress2Hook()
     fakeAddressTable.pFnZwSetSystemInformation  = 
     fakeAddressTable.pFnZwCreateThread          =  
     fakeAddressTable.pFnZwTerminateThread       =   0;
-    // Ìæ»» KeInsertQueneApc ÖĞµÄ KiInsertQueneApc
+    // æ›¿æ¢ KeInsertQueneApc ä¸­çš„ KiInsertQueneApc
     fakeAddressTable.pFnKeInsertQueneApc        =   (ULONG)fake_KiInsertQueueApc;
            
     OrigAddressTable.pFnZwOpenKey               =   SYSCALL_ADDRESS(ZwOpenKey);
@@ -227,7 +227,7 @@ xchg_value_hook(ULONG OrigAddress, ULONG fakeAddress, PUCHAR OpCodeMoved, PUCHAR
                 if (Length == 0)  break;
 
                 //
-                // ´Ë´¦µÄÌØÕ÷ÂëÊÇ : NtTerminateProcess ºÍ NtDuplicateObject ¹²ÓÃµÄ
+                // æ­¤å¤„çš„ç‰¹å¾ç æ˜¯ : NtTerminateProcess å’Œ NtDuplicateObject å…±ç”¨çš„
                 //
                 if (*(PUCHAR)cPtr == 0x6A && 
                     *(PULONG)(cPtr + 2) == 0xE80875FF) 
@@ -248,8 +248,8 @@ xchg_value_hook(ULONG OrigAddress, ULONG fakeAddress, PUCHAR OpCodeMoved, PUCHAR
                 if (Length == 0)  break;
                 
                 //
-                // ´Ë´¦µÄÌØÕ÷ÂëÊÇÑ°ÕÒ KeInsertQueneApc ÖĞµÄ KiInsertQueneApc
-                // ´Ë´¦Ã»ÓĞ¿¼ÂÇ°²È«ĞÔ£¬±ÈÈç´ËÊ±µÄ KiInsertQueneApc ÒÑ¾­±»Ìæ»»ÁË£¬ÒÔºóÍêÉÆ
+                // æ­¤å¤„çš„ç‰¹å¾ç æ˜¯å¯»æ‰¾ KeInsertQueneApc ä¸­çš„ KiInsertQueneApc
+                // æ­¤å¤„æ²¡æœ‰è€ƒè™‘å®‰å…¨æ€§ï¼Œæ¯”å¦‚æ­¤æ—¶çš„ KiInsertQueneApc å·²ç»è¢«æ›¿æ¢äº†ï¼Œä»¥åå®Œå–„
                 //
                 if (*(PUCHAR)cPtr == 0xE8 && 
                     *(PUSHORT)(cPtr + 5) == 0xD88A) 
@@ -277,8 +277,8 @@ xchg_value_hook(ULONG OrigAddress, ULONG fakeAddress, PUCHAR OpCodeMoved, PUCHAR
         pcbCoverLength[0] = OpCodeSize;
 
         //
-        // ÒÔÏÂÅĞ¶Ï¿ÉÒÔ±£Ö¤ NtTerminateProcess ºÍ NtDuplicateObject ÖĞµÄ 
-        // ObReferenceObjectByHandle »Ö¸´ÊÇ°²È«µÄ
+        // ä»¥ä¸‹åˆ¤æ–­å¯ä»¥ä¿è¯ NtTerminateProcess å’Œ NtDuplicateObject ä¸­çš„ 
+        // ObReferenceObjectByHandle æ¢å¤æ˜¯å®‰å…¨çš„
         //
         if (Number == id_zwdo || Number == id_zwtp)  
             OrigDeltaAddress = (ULONG)ObReferenceObjectByHandle - (HookStartAddress[0] - 1) - 5;
@@ -353,19 +353,19 @@ BOOLEAN ScHeInlineHookEngine(ULONG FunctionAddress, ULONG Id)
     fakeAddress = *((PULONG)&fakeAddressTable + Id);
 
     //
-    // Id = 5 ¶ÔÓ¦µÄÊÇ ZwCreateKey
+    // Id = 5 å¯¹åº”çš„æ˜¯ ZwCreateKey
     //
     if (Id == 5)  return result;
 
     //
-    // Èç¹ûÊÇ NtTerminateProcess »òÕß NtDuplicateObject 
-    // ÔòÌØÊâ´¦ÀíÆäµ÷ÓÃµÄ ObReferenceObjectByHandle º¯Êı
+    // å¦‚æœæ˜¯ NtTerminateProcess æˆ–è€… NtDuplicateObject 
+    // åˆ™ç‰¹æ®Šå¤„ç†å…¶è°ƒç”¨çš„ ObReferenceObjectByHandle å‡½æ•°
     //
     id_zwtp = ((ULONG)&fakeAddressTable.pFnZwTerminateProcess - (ULONG)&fakeAddressTable) / sizeof(ULONG);
     id_zwdo = ((ULONG)&fakeAddressTable.pFnZwDuplicateObject  - (ULONG)&fakeAddressTable) / sizeof(ULONG);
 
     // 
-    // Ìæ»» KeInsertQueneApc ÖĞµÄ KiInsertQueneApc
+    // æ›¿æ¢ KeInsertQueneApc ä¸­çš„ KiInsertQueneApc
     //
     id_kiqa = ((ULONG)&fakeAddressTable.pFnKeInsertQueneApc - (ULONG)&fakeAddressTable) / sizeof(ULONG);
 
@@ -404,8 +404,8 @@ VOID InitilizeHook()
         } while (Number < PREPARE_HOOK_NUMBER);
 
         bAlreadyHooked ++;
-        // ÖĞ¼ä»¹ÓĞ¸öfunction, Í¨¹ı HookFlags ÅĞ¶ÏÊÇ·ñÍ¨¹ı½âÎö PE(ntoskrnl) ÎÄ¼ş½âÎö ssdt º¯ÊıµØÖ·
-        // ÏÖÔÚÏÈ²»¼±×Å¿¼ÂÇ£¬Ôİ¶¨ssdt±íÖĞµÄº¯ÊıÃ»ÓĞ±»¸ü¸Ä
+        // ä¸­é—´è¿˜æœ‰ä¸ªfunction, é€šè¿‡ HookFlags åˆ¤æ–­æ˜¯å¦é€šè¿‡è§£æ PE(ntoskrnl) æ–‡ä»¶è§£æ ssdt å‡½æ•°åœ°å€
+        // ç°åœ¨å…ˆä¸æ€¥ç€è€ƒè™‘ï¼Œæš‚å®šssdtè¡¨ä¸­çš„å‡½æ•°æ²¡æœ‰è¢«æ›´æ”¹
     }
 }
 
@@ -437,7 +437,7 @@ BOOL ScHeUnInlineHookEngine(ULONG FunctionAddress, ULONG Id)
     BOOL result = FALSE;
 
     //
-    // Id = 5 ¶ÔÓ¦µÄÊÇ ZwCreateKey
+    // Id = 5 å¯¹åº”çš„æ˜¯ ZwCreateKey
     //
     if (Id == 5)  return result;
 
@@ -616,7 +616,7 @@ void WPOFF()
         cli
     };
 
-    g_uCr0 = uAttr; //±£´æÔ­ÓĞµÄ CRO ŒÙĞÔ
+    g_uCr0 = uAttr; //ä¿å­˜åŸæœ‰çš„ CRO å±¬æ€§
 
 }
 
@@ -627,7 +627,7 @@ VOID WPON()
     {
         sti
             push eax;
-        mov eax, g_uCr0; //»ÖÍÔ­ÓĞ CR0 ŒÙĞÔ
+        mov eax, g_uCr0; //æ¢å¾©åŸæœ‰ CR0 å±¬æ€§
         mov cr0, eax;
         pop eax;
     };
@@ -670,7 +670,7 @@ __declspec(naked) __fastcall my_function_detour_KiInsertQueueApc(
             mov MyDbgPrint, edi
     }
 
-    // µÃµ½ÁËµ±Ç°²ÎÊı1 -- Apc
+    // å¾—åˆ°äº†å½“å‰å‚æ•°1 -- Apc
     currentThread = *(PULONG)((ULONG)theApc + 8);
 
     currentProcess = *(PULONG)( (ULONG)currentThread + 0x044 );
@@ -710,14 +710,14 @@ __declspec(naked) __fastcall my_function_detour_KiInsertQueueApc(
     }
 
     __asm {
-        // ÊµÏÖÔ­º¯ÊıµÄÇ°8×Ö½Ú
+        // å®ç°åŸå‡½æ•°çš„å‰8å­—èŠ‚
         mov edi,edi
             push ebp
             mov  ebp, esp
             push ecx
             mov eax,ecx
 
-            //  Ìø×ªµ½Ô­º¯ÊıÖĞ
+            //  è·³è½¬åˆ°åŸå‡½æ•°ä¸­
             _emit 0xEA
             _emit 0xAA
             _emit 0xAA
@@ -739,7 +739,7 @@ ULONG GetFunctionAddr( IN PCWSTR FunctionName)
 
 }
 
-//¸ù¾İÌØÕ÷Öµ£¬´ÓKeInsertQueueApcËÑË÷ÖĞËÑË÷KiInsertQueueApc
+//æ ¹æ®ç‰¹å¾å€¼ï¼Œä»KeInsertQueueApcæœç´¢ä¸­æœç´¢KiInsertQueueApc
 VOID FindKiInsertQueueApcAddress()
 {
     PUCHAR cPtr;
@@ -842,7 +842,7 @@ NTSTATUS DriverEntry( IN PDRIVER_OBJECT theDriverObject, IN PUNICODE_STRING theR
 
     FindKiInsertQueueApcAddress();
     if ( NULL == KiInsertQueueApc ) {
-        DbgPrint("Î´ÕÒµ½ KiInsertQueueApc µÄµØÖ·.");
+        DbgPrint("æœªæ‰¾åˆ° KiInsertQueueApc çš„åœ°å€.");
         return STATUS_UNSUCCESSFUL;
     }
 
@@ -852,7 +852,7 @@ NTSTATUS DriverEntry( IN PDRIVER_OBJECT theDriverObject, IN PUNICODE_STRING theR
         DbgPrint("g_ProcessNameOffset == NULL, Failed");
         return STATUS_UNSUCCESSFUL;
     } else {
-        DbgPrint("g_ProcessNameOffsetµÄ±ãÒË£º%d\n", (ULONG)g_ProcessNameOffset);
+        DbgPrint("g_ProcessNameOffsetçš„ä¾¿å®œï¼š%d\n", (ULONG)g_ProcessNameOffset);
     }
 
 

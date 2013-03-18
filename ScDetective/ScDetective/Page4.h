@@ -2,21 +2,21 @@
 #ifndef _PAGE4_H_
 #define _PAGE4_H_
 
-// CProcessThreads ¶Ô»°¿ò
+// CProcessThreads å¯¹è¯æ¡†
 
 class CProcessThreads : public CDialog
 {
     DECLARE_DYNAMIC(CProcessThreads)
 
 public:
-    CProcessThreads(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CProcessThreads(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CProcessThreads();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_PROCESS_THREADS };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 private:
@@ -29,21 +29,21 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////////
-// CProcessModules ¶Ô»°¿ò
+// CProcessModules å¯¹è¯æ¡†
 
 class CProcessModules : public CDialog
 {
     DECLARE_DYNAMIC(CProcessModules)
 
 public:
-    CProcessModules(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CProcessModules(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CProcessModules();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_PROCESS_MODULES };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 public:
@@ -55,21 +55,21 @@ private:
 };
 
 //////////////////////////////////////////////////////////////////////////
-// CProcessHandles ¶Ô»°¿ò
+// CProcessHandles å¯¹è¯æ¡†
 
 class CProcessHandles : public CDialog
 {
     DECLARE_DYNAMIC(CProcessHandles)
 
 public:
-    CProcessHandles(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CProcessHandles(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CProcessHandles();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_PROCESS_HANDLES };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 public:
@@ -77,21 +77,21 @@ public:
 };
 
 
-// CPage4 ¶Ô»°¿ò
+// CPage4 å¯¹è¯æ¡†
 
 class CPage4 : public CDialog
 {
 	DECLARE_DYNAMIC(CPage4)
 
 public:
-	CPage4(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CPage4(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CPage4();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_PAGE_PROCESS };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

@@ -1,5 +1,5 @@
 /*
- *	定义一些常用的文件数据结构
+ *	瀹氫箟涓�浜涘父鐢ㄧ殑鏂囦欢鏁版嵁缁撴瀯
  */
 /////////////////////////////////////////////////////////////////////
 // Undocumented structures missing in ntddk.h
@@ -182,7 +182,7 @@ typedef struct _FILE_NAMES_INFORMATION {
     WCHAR FileName[1];
 } FILE_NAMES_INFORMATION, *PFILE_NAMES_INFORMATION;
 
-//申明未存档的API函数
+//鐢虫槑鏈瓨妗ｇ殑API鍑芥暟
 NTSYSAPI NTSTATUS
 ObQueryNameString(
 				  IN  PVOID Object,

@@ -2,21 +2,21 @@
 #ifndef __PAGE2_H__
 #define __PAGE2_H__
 
-// CPage2 ¶Ô»°¿ò
+// CPage2 å¯¹è¯æ¡†
 
 class CPage2 : public CDialog
 {
     DECLARE_DYNAMIC(CPage2)
 
 public:
-    CPage2(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CPage2(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CPage2();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_SSDTSHADOW };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 public:

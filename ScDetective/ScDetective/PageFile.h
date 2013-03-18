@@ -2,21 +2,21 @@
 #include "afxcmn.h"
 
 
-// CPageFile ¶Ô»°¿ò
+// CPageFile å¯¹è¯æ¡†
 
 class CPageFile : public CDialog
 {
 	DECLARE_DYNAMIC(CPageFile)
 
 public:
-	CPageFile(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CPageFile(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CPageFile();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_PAGE_FILE };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:

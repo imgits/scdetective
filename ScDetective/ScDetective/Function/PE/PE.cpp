@@ -4,11 +4,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣�����PE�ļ�����ȡPE�ṹ�и���ͷ��ָ��
-//	���������ibaseΪӳ�����ַ��
-//			  pfh,poh,psh�ֱ�ΪIMAGE_FILE_HEADER��IMAGE_OPTIONAL_HEADER��
-//			  IMAGE_SECTION_HEADER��ָ��
-//	�������������TRUE��ʾ��ȡ�ɹ�������ʧ��
+//	功能实现：解析PE文件，获取PE结构中各个头的指针
+//	输入参数：ibase为映像基地址；
+//			  pfh,poh,psh分别为IMAGE_FILE_HEADER，IMAGE_OPTIONAL_HEADER，
+//			  IMAGE_SECTION_HEADER的指针
+//	输出参数：返回TRUE表示获取成功，否则失败
 //
 ///////////////////////////////////////////////////////////////////////////////////
 DWORD GetHeaders(
@@ -19,7 +19,7 @@ DWORD GetHeaders(
     )
 
 {
-    TRACE0("��ȡPE�ļ�ͷ��Ϣ");
+    TRACE0("获取PE文件头信息");
     PIMAGE_DOS_HEADER mzhead=(PIMAGE_DOS_HEADER)ibase;
 
     if    ((mzhead->e_magic!=IMAGE_DOS_SIGNATURE) ||        
@@ -41,11 +41,11 @@ DWORD GetHeaders(
 
 //////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣���ȡ�Լ���ģ���к�����ַ��RVA��
-//	���������ModuleBaseΪģ����ص�ַ��
-//			 pszFuncNameΪ��������
-//           pFuncAddress Ϊ���������ַ��RVA��
-//	����������Ƿ���ҳɹ�
+//	功能实现：获取以加载模块中函数地址（RVA）
+//	输入参数：ModuleBase为模块加载地址，
+//			 pszFuncName为函数名称
+//           pFuncAddress 为输出函数地址（RVA）
+//	输出参数：是否查找成功
 //
 ///////////////////////////////////////////////////////////////////////////////////
 BOOL 
@@ -56,12 +56,12 @@ GetFuncAddressFromIAT(HMODULE ModuleBase, PSTR pszFuncName, PULONG pFuncAddress)
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣���ȡָ���ļ��е�ָ���ڵ�ָ��
-//	���������ImagePathΪҪ��ȡָ����ָ���ӳ��·��
-//			  SetionNameΪҪ���ҵĽ���
-//			  ImageBaseΪ���ص�ӳ���Ĭ�ϼ��ػ���ַ;
-//			  pFileΪ����ڴ�ӳ��Ļ�������ַ;
-//	�������������ָ��ָ�������ݵ�ָ��
+//	功能实现：获取指定文件中的指定节的指针
+//	输入参数：ImagePath为要获取指定节指针的映像路径
+//			  SetionName为要查找的节名
+//			  ImageBase为返回的映像的默认加载基地址;
+//			  pFile为存放内存映像的缓冲区地址;
+//	输出参数：返回指向指定节数据的指针
 //
 ///////////////////////////////////////////////////////////////////////////////////
 PCHAR 

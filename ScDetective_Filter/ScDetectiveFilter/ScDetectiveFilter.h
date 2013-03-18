@@ -28,9 +28,9 @@
 #include "fastIO.h"
 #include "myfs.h"
 
-// һЩ���õĽṹ��
+// 一些常用的结构体
 #include "d:\DriverStudy\struct.h"
-// �û��㣬�ں˹���ģ��
+// 用户层，内核公用模块
 #include "../../Common/IoControlCmd.h"
 
 #define MEM_TAG             'ScTt'

@@ -1,13 +1,13 @@
 
-// ʹ��Ԥ����ͷ
+// 使用预编译头
 #include "stdafx.h"
 
 //////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣�����KiServiceTable
-//	���������hModuleΪģ����ص�ַ��
-//			  dwKSDTΪKeServiceDescriptorTable RVA
-//	�������������KiServiceTable��ƫ�ƣ�RVA��
+//	功能实现：查找KiServiceTable
+//	输入参数：hModule为模块加载地址，
+//			  dwKSDT为KeServiceDescriptorTable RVA
+//	输出参数：返回KiServiceTable的偏移（RVA）
 //
 ///////////////////////////////////////////////////////////////////////////////////
 DWORD 
@@ -58,10 +58,10 @@ FindKiServiceTable(HMODULE hModule, DWORD dwKSDT)
 
 //////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣������ں��ļ�����ȡSSDT���еķ�����ԭʼ��ַ
-//	���������*NumOfAddress����ԭʼSSDT���еķ���������
-//	�������������DWORD���͵ĵ�ַ����ָ��
-//	ע�ͣ����صĻ���������Ҫ�� GlobalFree �ͷ�
+//	功能实现：解析内核文件，获取SSDT表中的服务函数原始地址
+//	输入参数：*NumOfAddress返回原始SSDT表中的服务函数个数
+//	输出参数：返回DWORD类型的地址数组指针
+//	注释：返回的缓冲区最终要用 GlobalFree 释放
 //
 ///////////////////////////////////////////////////////////////////////////////////
 PDWORD 
@@ -125,10 +125,10 @@ GetSsdtNativeFunAddresses(PDWORD  NumOfAddress)
 
 //////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣������ں��ļ�����ȡSSDT���еķ�����ԭʼ��ַ
-//	���������*NumOfFunName����ԭʼSSDT���еķ���������
-//	�������������DWORD���͵ĵ�ַ����ָ��
-//	ע�ͣ����صĻ���������Ҫ�� GlobalFree �ͷ�
+//	功能实现：解析内核文件，获取SSDT表中的服务函数原始地址
+//	输入参数：*NumOfFunName返回原始SSDT表中的服务函数个数
+//	输出参数：返回DWORD类型的地址数组指针
+//	注释：返回的缓冲区最终要用 GlobalFree 释放
 //
 ///////////////////////////////////////////////////////////////////////////////////
 PSSDT_NAME 
@@ -186,10 +186,10 @@ GetSsdtNativeFunNames(PDWORD NumOfFunName)
 
 //////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣������ں��ļ�(win32k.sys)����ȡShadow SSDT���еķ�����ԭʼ��ַ
-//	���������*NumberOfAddresses����ԭʼShaodw SSDT���еķ���������
-//	�������������DWORD���͵ĵ�ַ����ָ��
-//	ע�ͣ����صĻ���������Ҫ�� GlobalFree �ͷ�
+//	功能实现：解析内核文件(win32k.sys)，获取Shadow SSDT表中的服务函数原始地址
+//	输入参数：*NumberOfAddresses返回原始Shaodw SSDT表中的服务函数个数
+//	输出参数：返回DWORD类型的地址数组指针
+//	注释：返回的缓冲区最终要用 GlobalFree 释放
 //
 ///////////////////////////////////////////////////////////////////////////////////
 PDWORD 
@@ -218,7 +218,7 @@ GetShadowSsdtNativeFunAddresses(PDWORD NumberOfAddresses)
     wcscat_s(Path, L"\\");
     wcscat_s(Path, L"win32k.sys");
 
-    //��ȡwin32k.sys��.data������
+    //获取win32k.sys的.data节数据
     BufferData = (PDWORD)GetSectionPoint(Path, ".data", &ImageBase, &BufferFile);
     switch (wVersion)
     {
@@ -341,9 +341,9 @@ VersionHigh:
 
 /*++
 
-    win2k sp4~winxp sp1���ȶ�λ���ص�win32k.sys����ڵ�(��̬�ļ����鷳һЩ),
-    Ȼ������FF 15 DD CC BB AA����,���0xAABBCCDDָ���������KeAddSystemServiceTable
-    ��ǰָ���ǰ��4�ֽھ��Ǳ���ʵ�ʵ�ַ
+    win2k sp4~winxp sp1首先定位加载的win32k.sys的入口点(静态文件的麻烦一些),
+    然后搜索FF 15 DD CC BB AA特征,如果0xAABBCCDD指向的内容是KeAddSystemServiceTable
+    则当前指令的前面4字节就是表的实际地址
 
     bf9ae613 68109099bf      push    offset win32k!W32pArgumentTable (bf999010)
     bf9ae618 ff350c9099bf    push    dword ptr [win32k!W32pServiceLimit (bf99900c)]
@@ -353,7 +353,7 @@ VersionHigh:
     bf9ae62a ff15d8b498bf    call    dword ptr [win32k!_imp__KeAddSystemServiceTable (bf98b4d8)]
     bf9ae630 e8fd0a0000      call    win32k!InitCreateUserCrit (bf9af132)
 
-    �õ��ĵ�ַ��ȥwin32k.sys��ʵ�ʼ��ص�ַ��ת��ΪRAW OFFSET����shadow table���ļ��е�ƫ��
+    得到的地址减去win32k.sys的实际加载地址并转换为RAW OFFSET就是shadow table在文件中的偏移
 
 --*/
     DWORD ShadowSsdtTable = 0;

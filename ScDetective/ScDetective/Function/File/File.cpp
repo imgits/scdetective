@@ -60,10 +60,10 @@ VOID BrowseFolder(LPCTSTR szImagePath)
 
 ///////////////////////////////////////////////////////////////////////////////////
 //
-//	����ʵ�֣� �ѻ�ȡ���ļ�·��ת��Ϊͳһ��Win32·��
-//	��������� pszFileNameΪҪԭʼ·������
-//			  pszWin32NameΪת���õ�·������
-//	���ز����� ��
+//	功能实现： 把获取的文件路径转换为统一的Win32路径
+//	输入参数： pszFileName为要原始路径名；
+//			  pszWin32Name为转换好的路径名；
+//	返回参数： 无
 //
 ///////////////////////////////////////////////////////////////////////////////////
 VOID ModifyFileImagePath(PSTR pszFilePath, PSTR pszWin32Name, ULONG cbszWin32Name)
