@@ -1,4 +1,4 @@
-// Page4.cpp : ÊµÏÖÎÄ¼ş
+// Page4.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -9,7 +9,7 @@ extern CStatic* theStatus;
 ULONG g_EProcess;
 WCHAR g_szImageName[64];
 
-// CPage4 ¶Ô»°¿ò
+// CPage4 å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CPage4, CDialog)
 
@@ -42,21 +42,21 @@ BEGIN_MESSAGE_MAP(CPage4, CDialog)
 END_MESSAGE_MAP()
 
 
-// CPage4 ÏûÏ¢´¦Àí³ÌĞò
+// CPage4 æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CPage4::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
     m_ListProcess.SetExtendedStyle(m_ListProcess.GetExtendedStyle() | LVS_EX_HEADERDRAGDROP | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListProcess.InsertColumn( 0, L"Ó³ÏñÃû³Æ",  LVCFMT_CENTER, 85, -1);
-    m_ListProcess.InsertColumn( 1, L"½ø³ÌId",    LVCFMT_RIGHT, 50, -1);
-    m_ListProcess.InsertColumn( 2, L"¸¸½ø³ÌId",  LVCFMT_RIGHT, 60, -1);
-    m_ListProcess.InsertColumn( 3, L"Òş²Ø",      LVCFMT_CENTER, 40, -1);
-    m_ListProcess.InsertColumn( 4, L"Ó³ÏñÂ·¾¶",  LVCFMT_LEFT, 235, -1);
+    m_ListProcess.InsertColumn( 0, L"æ˜ åƒåç§°",  LVCFMT_CENTER, 85, -1);
+    m_ListProcess.InsertColumn( 1, L"è¿›ç¨‹Id",    LVCFMT_RIGHT, 50, -1);
+    m_ListProcess.InsertColumn( 2, L"çˆ¶è¿›ç¨‹Id",  LVCFMT_RIGHT, 60, -1);
+    m_ListProcess.InsertColumn( 3, L"éšè—",      LVCFMT_CENTER, 40, -1);
+    m_ListProcess.InsertColumn( 4, L"æ˜ åƒè·¯å¾„",  LVCFMT_LEFT, 235, -1);
     m_ListProcess.InsertColumn( 5, L"EPROCESS",  LVCFMT_CENTER, 80, -1);  
-    m_ListProcess.InsertColumn( 6, L"Ó¦ÓÃ²ã·ÃÎÊ", LVCFMT_CENTER, 77, -1);
-    m_ListProcess.InsertColumn( 7, L"ÎÄ¼ş³§ÉÌ",   LVCFMT_LEFT, 140, -1);
+    m_ListProcess.InsertColumn( 6, L"åº”ç”¨å±‚è®¿é—®", LVCFMT_CENTER, 77, -1);
+    m_ListProcess.InsertColumn( 7, L"æ–‡ä»¶å‚å•†",   LVCFMT_LEFT, 140, -1);
 
     OnMenuRefreshProcess();
 
@@ -124,7 +124,7 @@ void CPage4::OnMenuRefreshProcess()
             //GetProcessImagePath(hProcess, szFullImagePath);
             CloseHandle(hProcess);
         } else {
-            wsprintf(szUserAccess, L"¾Ü¾ø");
+            wsprintf(szUserAccess, L"æ‹’ç»");
             NumberOfUnAccess ++;
         }
         if (ProcessInformation->EProcess == 0)  continue;
@@ -141,7 +141,7 @@ void CPage4::OnMenuRefreshProcess()
             GetFileCorporation(szFullImagePath, szFileInfomation);
         }
         if (ProcessInformation->bHidden) {
-            wcscpy_s(szHidden, 8, L"ÊÇ");
+            wcscpy_s(szHidden, 8, L"æ˜¯");
             NumberOfHidden ++;
         } else {
             wcscpy_s(szHidden, 8, L"-");
@@ -159,7 +159,7 @@ void CPage4::OnMenuRefreshProcess()
     }
     GlobalFree(AllocBuffer);
 
-    wsprintf(StatusBuffer, L"µ±Ç°½ø³ÌÊı :: %d - Ó¦ÓÃ²ã²»¿É·ÃÎÊ :: %d - Òş²Ø½ø³ÌÊı :: %d", 
+    wsprintf(StatusBuffer, L"å½“å‰è¿›ç¨‹æ•° :: %d - åº”ç”¨å±‚ä¸å¯è®¿é—® :: %d - éšè—è¿›ç¨‹æ•° :: %d", 
              NumberOfProcess, NumberOfUnAccess, NumberOfHidden);
     theStatus->SetWindowText(StatusBuffer);
 }
@@ -167,7 +167,7 @@ void CPage4::OnMenuRefreshProcess()
 void CPage4::OnNMRClickListProcess(NMHDR *pNMHDR, LRESULT *pResult)
 {
     LPNMITEMACTIVATE pNMItemActivate = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
-    // TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
     NM_LISTVIEW* pNMListView = (NM_LISTVIEW*)pNMHDR;
     if (pNMListView->iItem != -1 && pNMListView->iSubItem != -1)
     {
@@ -201,7 +201,7 @@ void CPage4::OnNMCustomdrawListProcess(NMHDR *pNMHDR, LRESULT *pResult)
         m_ListProcess.GetItemText(nItem, 7, Buffer, 64);
         if (StrStr(Buffer, L"Microsoft ") == NULL)  clrNewTextColor = RGB(0, 0, 255);
         m_ListProcess.GetItemText(nItem, 3, Buffer, 64);
-        if (StrStr(Buffer, L"ÊÇ"))  clrNewTextColor = RGB(255, 0, 0);
+        if (StrStr(Buffer, L"æ˜¯"))  clrNewTextColor = RGB(255, 0, 0);
 
         if( nItem % 2 == 0) clrNewBkColor = RGB(240, 240, 240);	  
         else  clrNewBkColor = RGB(255, 255, 255);	  
@@ -281,7 +281,7 @@ void CPage4::OnMenuLocate2File()
 
 //////////////////////////////////////////////////////////////////////////
 
-// CProcessThreads ¶Ô»°¿ò
+// CProcessThreads å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CProcessThreads, CDialog)
 
@@ -306,20 +306,20 @@ BEGIN_MESSAGE_MAP(CProcessThreads, CDialog)
 END_MESSAGE_MAP()
 
 
-// CProcessThreads ÏûÏ¢´¦Àí³ÌĞò
+// CProcessThreads æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CProcessThreads::OnInitDialog()
 {
     CDialog::OnInitDialog();
     
     m_ListThreads.SetExtendedStyle(m_ListThreads.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListThreads.InsertColumn( 0, L"Ïß³ÌId",   LVCFMT_CENTER, 50, -1);
+    m_ListThreads.InsertColumn( 0, L"çº¿ç¨‹Id",   LVCFMT_CENTER, 50, -1);
     m_ListThreads.InsertColumn( 1, L"ETHREAD",  LVCFMT_CENTER, 80, -1);
     m_ListThreads.InsertColumn( 2, L"Teb",      LVCFMT_CENTER, 80, -1);
-    m_ListThreads.InsertColumn( 3, L"ÓÅÏÈ¼¶",    LVCFMT_CENTER, 60, -1);
-    m_ListThreads.InsertColumn( 4, L"Ïß³ÌÈë¿Ú",  LVCFMT_CENTER, 80, -1);  
-    m_ListThreads.InsertColumn( 5, L"ÇĞ»»´ÎÊı",  LVCFMT_RIGHT, 70, -1);
-    m_ListThreads.InsertColumn( 6, L"Ïß³Ì×´Ì¬",  LVCFMT_CENTER, 80, -1);
+    m_ListThreads.InsertColumn( 3, L"ä¼˜å…ˆçº§",    LVCFMT_CENTER, 60, -1);
+    m_ListThreads.InsertColumn( 4, L"çº¿ç¨‹å…¥å£",  LVCFMT_CENTER, 80, -1);  
+    m_ListThreads.InsertColumn( 5, L"åˆ‡æ¢æ¬¡æ•°",  LVCFMT_RIGHT, 70, -1);
+    m_ListThreads.InsertColumn( 6, L"çº¿ç¨‹çŠ¶æ€",  LVCFMT_CENTER, 80, -1);
 
     ShowThreads(g_EProcess);
 
@@ -396,13 +396,13 @@ void CProcessThreads::ShowThreads(ULONG EProcess)
     }
 _End:
     WCHAR szInfo[128];
-    wsprintf(szInfo, L"  %s - ¹²ÕÒµ½Ïß³Ì [ %d ]", g_szImageName, NumberOfThread);
+    wsprintf(szInfo, L"  %s - å…±æ‰¾åˆ°çº¿ç¨‹ [ %d ]", g_szImageName, NumberOfThread);
     this->SetWindowText(szInfo);
     GlobalFree(AllocBuffer);
 }
 
 
-// CProcessModules ¶Ô»°¿ò
+// CProcessModules å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CProcessModules, CDialog)
 
@@ -427,17 +427,17 @@ BEGIN_MESSAGE_MAP(CProcessModules, CDialog)
 END_MESSAGE_MAP()
 
 
-// CProcessModules ÏûÏ¢´¦Àí³ÌĞò
+// CProcessModules æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CProcessModules::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
     m_ListModules.SetExtendedStyle(m_ListModules.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListModules.InsertColumn( 0, L"Ä£¿éÂ·¾¶",  LVCFMT_CENTER, 200, -1);
-    m_ListModules.InsertColumn( 1, L"»ùµØÖ·",    LVCFMT_CENTER, 75, -1);
-    m_ListModules.InsertColumn( 2, L"´óĞ¡",      LVCFMT_CENTER, 75, -1);
-    m_ListModules.InsertColumn( 3, L"ÎÄ¼ş³§ÉÌ",   LVCFMT_LEFT, 145, -1);
+    m_ListModules.InsertColumn( 0, L"æ¨¡å—è·¯å¾„",  LVCFMT_CENTER, 200, -1);
+    m_ListModules.InsertColumn( 1, L"åŸºåœ°å€",    LVCFMT_CENTER, 75, -1);
+    m_ListModules.InsertColumn( 2, L"å¤§å°",      LVCFMT_CENTER, 75, -1);
+    m_ListModules.InsertColumn( 3, L"æ–‡ä»¶å‚å•†",   LVCFMT_LEFT, 145, -1);
   
     ShowModules(g_EProcess);
     
@@ -501,12 +501,12 @@ void CProcessModules::ShowModules(ULONG EProcess)
     }
 _End:
     WCHAR szInfo[128];
-    wsprintf(szInfo, L"  %s - ¹²ÕÒµ½Ä£¿é [ %d ]", g_szImageName, NumberOfModule);
+    wsprintf(szInfo, L"  %s - å…±æ‰¾åˆ°æ¨¡å— [ %d ]", g_szImageName, NumberOfModule);
     this->SetWindowText(szInfo);
     GlobalFree(AllocBuffer);
 }
 
-// CProcessHandles ¶Ô»°¿ò
+// CProcessHandles å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CProcessHandles, CDialog)
 
@@ -531,4 +531,4 @@ BEGIN_MESSAGE_MAP(CProcessHandles, CDialog)
 END_MESSAGE_MAP()
 
 
-// CProcessHandles ÏûÏ¢´¦Àí³ÌĞò
+// CProcessHandles æ¶ˆæ¯å¤„ç†ç¨‹åº

@@ -16,7 +16,7 @@
 #include "drvversion.h"
 
 //////////////////////////////////////////////////////////////////////////
-// ¶¨ÒåÒ»Ğ©È«¾Ö±äÁ¿
+// å®šä¹‰ä¸€äº›å…¨å±€å˜é‡
 //////////////////////////////////////////////////////////////////////////
 PEPROCESS   g_SystemProcess = NULL;
 ULONG       g_SystemProcessId;
@@ -40,20 +40,20 @@ extern POBJECT_TYPE *PsProcessType;
 extern POBJECT_TYPE *IoFileObjectType;
 
 //////////////////////////////////////////////////////////////////////////
-// ¹¦ÄÜÄ£¿é
+// åŠŸèƒ½æ¨¡å—
 //////////////////////////////////////////////////////////////////////////
-// Ò»Ğ©³£ÓÃµÄ½á¹¹Ìå
+// ä¸€äº›å¸¸ç”¨çš„ç»“æ„ä½“
 #include "e:\DriverStudy\struct.h"
-// ÓÃ»§²ã£¬ÄÚºË¹«ÓÃÄ£¿é
+// ç”¨æˆ·å±‚ï¼Œå†…æ ¸å…¬ç”¨æ¨¡å—
 #include "../../Common/IoControlCmd.h"
 #include "../../Common/DataStruct.h"
-// ÄÚºËÄ£¿é³õÊ¼»¯º¯Êı
+// å†…æ ¸æ¨¡å—åˆå§‹åŒ–å‡½æ•°
 #include "System/Initialize.h"
-// ssdt ¹¦ÄÜÄ£¿é
+// ssdt åŠŸèƒ½æ¨¡å—
 #include "ssdt/ssdt.h"
-// Shadow ssdt ¹¦ÄÜÄ£¿é
+// Shadow ssdt åŠŸèƒ½æ¨¡å—
 #include "ssdt/ssdt_shadow.h"
-// ½ø³Ì/Ä£¿é Ïà¹Ø¹¦ÄÜÄ£¿é
+// è¿›ç¨‹/æ¨¡å— ç›¸å…³åŠŸèƒ½æ¨¡å—
 #include "Process/Process.h"
 #include "Process/module.h"
 // LDasm

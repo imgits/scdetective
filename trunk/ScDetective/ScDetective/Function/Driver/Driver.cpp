@@ -1,6 +1,6 @@
 
 // #include "../../stdafx.h"
-// Ê¹ÓÃÔ¤±àÒëÍ·
+// ä½¿ç”¨é¢„ç¼–è¯‘å¤´
 #include "stdafx.h"
 
 BOOL CDriver::DoCDriver(LPCTSTR pszDriverPath, LPCTSTR pszLinkName)
@@ -11,22 +11,22 @@ BOOL CDriver::DoCDriver(LPCTSTR pszDriverPath, LPCTSTR pszLinkName)
     m_hSCM = m_hService = NULL;
     m_hDriver = INVALID_HANDLE_VALUE;
 
-    // ´ò¿ªSCM¹ÜÀíÆ÷
+    // æ‰“å¼€SCMç®¡ç†å™¨
     m_hSCM = ::OpenSCManagerW(NULL, NULL, SC_MANAGER_ALL_ACCESS);
     if(m_hSCM == NULL)
     {
-        MessageBox(0, L"´ò¿ª·şÎñ¿ØÖÆ¹ÜÀíÆ÷Ê§°Ü\n", 
-            L"¿ÉÄÜÊÇÒòÎªÄú²»ÓµÓĞAdministratorÈ¨ÏŞ\n", 0);
+        MessageBox(0, L"æ‰“å¼€æœåŠ¡æ§åˆ¶ç®¡ç†å™¨å¤±è´¥\n", 
+            L"å¯èƒ½æ˜¯å› ä¸ºæ‚¨ä¸æ‹¥æœ‰Administratoræƒé™\n", 0);
         return FALSE;
     }
 
-    // ´´½¨»ò´ò¿ª·şÎñ
+    // åˆ›å»ºæˆ–æ‰“å¼€æœåŠ¡
     m_hService = ::CreateServiceW(m_hSCM, m_szLinkName, m_szLinkName, SERVICE_ALL_ACCESS, 
         SERVICE_KERNEL_DRIVER, SERVICE_DEMAND_START, SERVICE_ERROR_NORMAL, 
         pszDriverPath, NULL, 0, NULL, NULL, NULL);
     if(m_hService == NULL)
     {
-        // ´´½¨·şÎñÊ§°Ü£¬¿ÉÄÜÊÇÒòÎª·şÎñÒÑ¾­´æÔÚ£¬ËùÒÔ»¹ÒªÊÔÍ¼´ò¿ªËü
+        // åˆ›å»ºæœåŠ¡å¤±è´¥ï¼Œå¯èƒ½æ˜¯å› ä¸ºæœåŠ¡å·²ç»å­˜åœ¨ï¼Œæ‰€ä»¥è¿˜è¦è¯•å›¾æ‰“å¼€å®ƒ
         int nError = ::GetLastError();
         if(nError == ERROR_SERVICE_EXISTS || nError == ERROR_SERVICE_MARKED_FOR_DELETE)
         {
@@ -35,7 +35,7 @@ BOOL CDriver::DoCDriver(LPCTSTR pszDriverPath, LPCTSTR pszLinkName)
         if (m_hService == NULL)
         {
             MessageBox(0, L"CreateServiceW\n", 
-                L"¿ÉÄÜÊÇÒòÎªÄú²»ÓµÓĞAdministratorÈ¨ÏŞ\n", 0);
+                L"å¯èƒ½æ˜¯å› ä¸ºæ‚¨ä¸æ‹¥æœ‰Administratoræƒé™\n", 0);
         }
         else
         {
@@ -51,16 +51,16 @@ BOOL CDriver::DoCDriver(LPCTSTR pszDriverPath, LPCTSTR pszLinkName)
 
 VOID CDriver::UnDoCDriver()
 {
-    // ¹Ø±ÕÉè±¸¾ä±ú
+    // å…³é—­è®¾å¤‡å¥æŸ„
     if(m_hDriver != INVALID_HANDLE_VALUE)
         ::CloseHandle(m_hDriver);
-    // Èç¹û´´½¨ÁË·şÎñ£¬¾Í½«Ö®É¾³ı
+    // å¦‚æœåˆ›å»ºäº†æœåŠ¡ï¼Œå°±å°†ä¹‹åˆ é™¤
     if(m_bCreateService)
     {
         StopDriver();
         ::DeleteService(m_hService);	
     }
-    // ¹Ø±Õ¾ä±ú
+    // å…³é—­å¥æŸ„
     if(m_hService != NULL)
         ::CloseServiceHandle(m_hService);
     if(m_hSCM != NULL)
@@ -73,7 +73,7 @@ BOOL CDriver::StartDriver()
         return TRUE;
     if(m_hService == NULL)
         return FALSE;
-    // Æô¶¯·şÎñ
+    // å¯åŠ¨æœåŠ¡
     if(!::StartServiceW(m_hService, 0, NULL))
     {
         int nError = ::GetLastError();
@@ -84,7 +84,7 @@ BOOL CDriver::StartDriver()
     }
     else
     {
-        // Æô¶¯³É¹¦ºó£¬µÈ´ı·şÎñ½øÈëÔËĞĞ×´Ì¬
+        // å¯åŠ¨æˆåŠŸåï¼Œç­‰å¾…æœåŠ¡è¿›å…¥è¿è¡ŒçŠ¶æ€
         int nTry = 0;
         SERVICE_STATUS ss;
         ::QueryServiceStatus(m_hService, &ss);
@@ -105,7 +105,7 @@ BOOL CDriver::StopDriver()
         return TRUE;
     if(m_hService == NULL)
         return FALSE;
-    // Í£Ö¹·şÎñ
+    // åœæ­¢æœåŠ¡
     SERVICE_STATUS ss;
     if(!::ControlService(m_hService, SERVICE_CONTROL_STOP, &ss))
     {
@@ -114,7 +114,7 @@ BOOL CDriver::StopDriver()
     }
     else
     {
-        // µÈ´ı·şÎñÍêÈ«Í£Ö¹ÔËĞĞ
+        // ç­‰å¾…æœåŠ¡å®Œå…¨åœæ­¢è¿è¡Œ
         int nTry = 0;
         while(ss.dwCurrentState == SERVICE_STOP_PENDING && nTry++ < 80)
         {
@@ -132,10 +132,10 @@ BOOL CDriver::OpenDevice()
     if(m_hDriver != INVALID_HANDLE_VALUE)
         return TRUE;
 
-    // "\\.\"ÊÇWin32ÖĞ¶¨Òå±¾µØ¼ÆËã»úµÄ·½·¨£¬
+    // "\\.\"æ˜¯Win32ä¸­å®šä¹‰æœ¬åœ°è®¡ç®—æœºçš„æ–¹æ³•ï¼Œ
     WCHAR sz[256] = { 0 };
     wsprintf(sz, L"\\\\.\\%s", m_szLinkName);
-    // ´ò¿ªÇı¶¯³ÌĞòËù¿ØÖÆÉè±¸
+    // æ‰“å¼€é©±åŠ¨ç¨‹åºæ‰€æ§åˆ¶è®¾å¤‡
     m_hDriver = ::CreateFile(sz,
         GENERIC_READ | GENERIC_WRITE,
         0,
@@ -152,7 +152,7 @@ DWORD CDriver::IoControl(DWORD nCode, PVOID pInBuffer,
 {
     if(m_hDriver == INVALID_HANDLE_VALUE)
         return -1;
-    // ÏòÇı¶¯³ÌĞò·¢ËÍ¿ØÖÆ´úÂë
+    // å‘é©±åŠ¨ç¨‹åºå‘é€æ§åˆ¶ä»£ç 
     DWORD nBytesReturn;
     BOOL bRet = ::DeviceIoControl(m_hDriver, nCode, 
         pInBuffer, nInCount, pOutBuffer, nOutCount, &nBytesReturn, NULL);

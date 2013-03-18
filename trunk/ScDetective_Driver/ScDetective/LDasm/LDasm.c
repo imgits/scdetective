@@ -626,7 +626,7 @@ unsigned long __fastcall SizeOfCode(void *Code, unsigned char **pOpcode)
 }
 
 
-/*Получени?размер?функци?по указател на не?(размер до первой комманды RET)*/
+/*йЎ№еЎЌйє‡йѕ›?з–ЈзЏ€е±¦?и¶”й»»йІЁ?й•± з®Ёе™»е›№е’« зЈ¬ з¤¤?(з–ЈзЏ€е±¦ жј• й•Ґз–ґй“‹ и§ђзҐ†е›—жЅІ RET)*/
 unsigned long __fastcall SizeOfProc(void *Proc)
 {
 	ULONG  Length;
@@ -644,7 +644,7 @@ unsigned long __fastcall SizeOfProc(void *Proc)
 }
 
 
-/*определени?того, имее?ли комманда rel32 offset*/
+/*й“’з–±жєґи„Ійѕ›?иќѕжіђ, жЎЃй‚‹?и…“ и§ђзҐ†е›—жє§ rel32 offset*/
 char __fastcall IsRelativeCmd(unsigned char *pOpcode)
 {
 	UCHAR Flags;

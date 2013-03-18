@@ -1,4 +1,4 @@
-// Page3.cpp : ÊµÏÖÎÄ¼ş
+// Page3.cpp : å®ç°æ–‡ä»¶
 //
 
 #include "stdafx.h"
@@ -7,7 +7,7 @@ extern CDriver theDriver;
 extern CStatic* theStatus;
 WCHAR StatusBuffer[128];
 
-// CPage3 ¶Ô»°¿ò
+// CPage3 å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CPage3, CDialog)
 
@@ -34,7 +34,7 @@ BEGIN_MESSAGE_MAP(CPage3, CDialog)
 END_MESSAGE_MAP()
 
 
-// CPage3 ÏûÏ¢´¦Àí³ÌĞò
+// CPage3 æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CPage3::OnInitDialog()
 {
@@ -45,10 +45,10 @@ BOOL CPage3::OnInitDialog()
 
     tableHook.MoveWindow(CRect(-7,0,825,20), FALSE);
 
-    tableHook.InsertItem(0, L"ÏûÏ¢¹³×Ó");
+    tableHook.InsertItem(0, L"æ¶ˆæ¯é’©å­");
     PageArrayR3Hook[0]->Create(IDD_MSGHOOK, this);
 
-    tableHook.InsertItem(1, L"ÏµÍ³»Øµ÷");
+    tableHook.InsertItem(1, L"ç³»ç»Ÿå›è°ƒ");
     PageArrayR3Hook[1]->Create(IDD_SYSROUTINE, this);
 
     tableHook.SetCurSel(0);
@@ -67,7 +67,7 @@ BOOL CPage3::OnInitDialog()
     return TRUE; 
 }
 
-// CSystemRoutine ÏûÏ¢´¦Àí³ÌĞò
+// CSystemRoutine æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 void CPage3::OnTcnSelchangeTabR3Hook(NMHDR *pNMHDR, LRESULT *pResult)
 {
@@ -97,7 +97,7 @@ void CPage3::OnShowWindow(BOOL bShow, UINT nStatus)
     }
     
 }
-// CMsgHook ¶Ô»°¿ò
+// CMsgHook å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CMsgHook, CDialog)
 
@@ -130,12 +130,12 @@ BOOL CMsgHook::OnInitDialog()
     CDialog::OnInitDialog();
 
     m_ListMsgHook.SetExtendedStyle(m_ListMsgHook.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListMsgHook.InsertColumn(0, L"¾ä±ú",      LVCFMT_CENTER,  80);
-    m_ListMsgHook.InsertColumn(1, L"¹³×ÓÀàĞÍ",   LVCFMT_LEFT,    100);
-    m_ListMsgHook.InsertColumn(2, L"¹³×Óº¯Êı",   LVCFMT_CENTER,  80);
-    m_ListMsgHook.InsertColumn(3, L"½ø³ÌId",    LVCFMT_RIGHT,   60);
-    m_ListMsgHook.InsertColumn(4, L"Ïß³ÌId",    LVCFMT_RIGHT,   60);
-    m_ListMsgHook.InsertColumn(5, L"ÉêÇë½ø³ÌÂ·¾¶", LVCFMT_LEFT,  400);
+    m_ListMsgHook.InsertColumn(0, L"å¥æŸ„",      LVCFMT_CENTER,  80);
+    m_ListMsgHook.InsertColumn(1, L"é’©å­ç±»å‹",   LVCFMT_LEFT,    100);
+    m_ListMsgHook.InsertColumn(2, L"é’©å­å‡½æ•°",   LVCFMT_CENTER,  80);
+    m_ListMsgHook.InsertColumn(3, L"è¿›ç¨‹Id",    LVCFMT_RIGHT,   60);
+    m_ListMsgHook.InsertColumn(4, L"çº¿ç¨‹Id",    LVCFMT_RIGHT,   60);
+    m_ListMsgHook.InsertColumn(5, L"ç”³è¯·è¿›ç¨‹è·¯å¾„", LVCFMT_LEFT,  400);
 
     return TRUE;  
 }
@@ -224,7 +224,7 @@ void CMsgHook::OnMenuRefreshMsgHook()
 
             RtlCopyMemory(&HookInfo, Buffer, sizeof(HOOK_INFO));
 
-            // Ìî³ä¹³×ÓĞÅÏ¢µ½ MsgHookInfo ÖĞ
+            // å¡«å……é’©å­ä¿¡æ¯åˆ° MsgHookInfo ä¸­
             MsgHookInfo.hHook = HookInfo.hHook;
             MsgHookInfo.HookType = HookInfo.HookType;
             MsgHookInfo.offPfn = HookInfo.OffPfn;
@@ -297,7 +297,7 @@ void CMsgHook::OnMenuRefreshMsgHook()
     GlobalFree(Buffer);
     GlobalFree(pHandleEntries);
 
-    wsprintf(StatusBuffer, L"ÏûÏ¢¹³×Ó :: %d", m_ListMsgHook.GetItemCount());
+    wsprintf(StatusBuffer, L"æ¶ˆæ¯é’©å­ :: %d", m_ListMsgHook.GetItemCount());
     theStatus->SetWindowText(StatusBuffer);
 }
 
@@ -315,7 +315,7 @@ void CMsgHook::OnMenuUnhook()
 
 void CMsgHook::OnMenuLocate2File()
 {
-    // TODO: ÔÚ´ËÌí¼ÓÃüÁî´¦Àí³ÌĞò´úÂë
+    // TODO: åœ¨æ­¤æ·»åŠ å‘½ä»¤å¤„ç†ç¨‹åºä»£ç 
 }
 
 void CMsgHook::OnNMRClickListMsghook(NMHDR *pNMHDR, LRESULT *pResult)
@@ -331,7 +331,7 @@ void CMsgHook::OnNMRClickListMsghook(NMHDR *pNMHDR, LRESULT *pResult)
 
     *pResult = 0;
 }
-// CSystemRoutine ¶Ô»°¿ò
+// CSystemRoutine å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CSystemRoutine, CDialog)
 

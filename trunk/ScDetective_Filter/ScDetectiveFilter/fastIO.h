@@ -368,10 +368,10 @@ InitFastIo(IN PDRIVER_OBJECT DriverObject)
     {
         return FALSE;
     }
-    // ÄÚ´æÇåÁã¡£
+    // å†…å­˜æ¸…é›¶ã€‚
     RtlZeroMemory(fastIoDispatch, sizeof(FAST_IO_DISPATCH));
     fastIoDispatch->SizeOfFastIoDispatch = sizeof(FAST_IO_DISPATCH);
-    //ÌîÐ´º¯Êý½Ó¿Ú±í
+    //å¡«å†™å‡½æ•°æŽ¥å£è¡¨
     fastIoDispatch->FastIoCheckIfPossible = SfFastIoCheckIfPossible;
     fastIoDispatch->FastIoRead = SfFastIoRead;
     fastIoDispatch->FastIoWrite = SfFastIoWrite;

@@ -1,11 +1,11 @@
-// Page5.cpp : ÊµÏÖÎÄ¼þ
+// Page5.cpp : å®žçŽ°æ–‡ä»¶
 //
 
 #include "stdafx.h"
 
 extern CDriver theDriver;
 extern CStatic* theStatus;
-// CPage5 ¶Ô»°¿ò
+// CPage5 å¯¹è¯æ¡†
 
 IMPLEMENT_DYNAMIC(CPage5, CDialog)
 
@@ -34,21 +34,21 @@ BEGIN_MESSAGE_MAP(CPage5, CDialog)
 END_MESSAGE_MAP()
 
 
-// CPage5 ÏûÏ¢´¦Àí³ÌÐò
+// CPage5 æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CPage5::OnInitDialog()
 {
     CDialog::OnInitDialog();
 
     m_ListDriver.SetExtendedStyle(m_ListDriver.GetExtendedStyle() | LVS_EX_FULLROWSELECT | LVS_EX_GRIDLINES);
-    m_ListDriver.InsertColumn( 0, L"Çý¶¯Ãû",     LVCFMT_CENTER, 80, -1);
-    m_ListDriver.InsertColumn( 1, L"»ùµØÖ·",     LVCFMT_CENTER, 80, -1);
-    m_ListDriver.InsertColumn( 2, L"Ó³Ïñ´óÐ¡",   LVCFMT_CENTER, 80, -1);
-    m_ListDriver.InsertColumn( 3, L"Çý¶¯¶ÔÏó",   LVCFMT_CENTER, 80, -1);
-    m_ListDriver.InsertColumn( 4, L"Çý¶¯Â·¾¶",   LVCFMT_LEFT, 240, -1);  
-    m_ListDriver.InsertColumn( 5, L"·þÎñÃû",     LVCFMT_LEFT, 70, -1);
-    m_ListDriver.InsertColumn( 6, L"Òþ²Ø",      LVCFMT_CENTER, 45, -1);
-    m_ListDriver.InsertColumn( 7, L"ÎÄ¼þ³§ÉÌ",   LVCFMT_LEFT, 110, -1);
+    m_ListDriver.InsertColumn( 0, L"é©±åŠ¨å",     LVCFMT_CENTER, 80, -1);
+    m_ListDriver.InsertColumn( 1, L"åŸºåœ°å€",     LVCFMT_CENTER, 80, -1);
+    m_ListDriver.InsertColumn( 2, L"æ˜ åƒå¤§å°",   LVCFMT_CENTER, 80, -1);
+    m_ListDriver.InsertColumn( 3, L"é©±åŠ¨å¯¹è±¡",   LVCFMT_CENTER, 80, -1);
+    m_ListDriver.InsertColumn( 4, L"é©±åŠ¨è·¯å¾„",   LVCFMT_LEFT, 240, -1);  
+    m_ListDriver.InsertColumn( 5, L"æœåŠ¡å",     LVCFMT_LEFT, 70, -1);
+    m_ListDriver.InsertColumn( 6, L"éšè—",      LVCFMT_CENTER, 45, -1);
+    m_ListDriver.InsertColumn( 7, L"æ–‡ä»¶åŽ‚å•†",   LVCFMT_LEFT, 110, -1);
 
     return TRUE;  
 }
@@ -85,7 +85,7 @@ void CPage5::OnNMCustomdrawListDrivers(NMHDR *pNMHDR, LRESULT *pResult)
         if (StrStr(Buffer, L"Microsoft ") == 0)
             clrNewTextColor = RGB(0, 0, 255);
         m_ListDriver.GetItemText(nItem, 6, Buffer, 64);
-        if (StrStr(Buffer, L"ÊÇ"))  clrNewTextColor = RGB(255, 0, 0);
+        if (StrStr(Buffer, L"æ˜¯"))  clrNewTextColor = RGB(255, 0, 0);
 
         if( nItem % 2 == 0) clrNewBkColor = RGB(240, 240, 240);	  
         else  clrNewBkColor = RGB(255, 255, 255);	  
@@ -171,7 +171,7 @@ void CPage5::OnMenuRefreshDrivers()
         else  wcscpy_s(szDriverObject, 16, L"-");
 
         if (DriverInformation->bHidden) {
-            wcscpy_s(szHidden, 16, L"ÊÇ");
+            wcscpy_s(szHidden, 16, L"æ˜¯");
             NumberOfHidden ++;
         } else {
             wcscpy_s(szHidden, 16, L"-");
@@ -194,7 +194,7 @@ void CPage5::OnMenuRefreshDrivers()
         m_ListDriver.SetItemText(nItemNum, 6, szHidden);
         m_ListDriver.SetItemText(nItemNum, 7, szCorporation);
     }
-    wsprintf(StatusBuffer, L"¹²ÕÒµ½Çý¶¯Ä£¿é :: %d - Òþ²ØÄ£¿é :: %d", NumberOfDrivers, NumberOfHidden);
+    wsprintf(StatusBuffer, L"å…±æ‰¾åˆ°é©±åŠ¨æ¨¡å— :: %d - éšè—æ¨¡å— :: %d", NumberOfDrivers, NumberOfHidden);
     theStatus->SetWindowText(StatusBuffer);
     GlobalFree(AllocBuffer);
 }

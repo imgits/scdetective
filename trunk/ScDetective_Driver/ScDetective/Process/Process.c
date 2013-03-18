@@ -248,7 +248,7 @@ ULONG GetPebCommonAddress()
     PEPROCESS Process;
 
     //
-    //ÓÉÓÚsystem½ø³ÌµÄpeb×ÜÊÇÁã Ö»ÓĞµ½ÆäËû½ø³ÌÈ¥ÕÒÁË
+    //ç”±äºsystemè¿›ç¨‹çš„pebæ€»æ˜¯é›¶ åªæœ‰åˆ°å…¶ä»–è¿›ç¨‹å»æ‰¾äº†
     //
     Process = (PEPROCESS)((ULONG)((PLIST_ENTRY)
         ((ULONG)g_SystemProcess + offset_Process_ActiveProcessLinks))->Flink - offset_Process_ActiveProcessLinks);
@@ -349,7 +349,7 @@ VOID EnumerateProcessByMemorySearch()
                     ObjectProcess = ((PULONG)(ObjectTable + offset_HandleTable_QuotaProcess))[0];
                     if (EProcess != ObjectProcess)  goto _end;
 
-                    // ·¢ÏÖÄ¨ PspCidTable µÄ½ø³Ì
+                    // å‘ç°æŠ¹ PspCidTable çš„è¿›ç¨‹
                     HiddenProcess = ExAllocatePoolWithTag(NonPagedPool, sizeof(PROCESS_INFO), MEM_TAG);
                     RtlZeroMemory(HiddenProcess, sizeof(PROCESS_INFO));
                     GetProcessInformation((PEPROCESS)EProcess, HiddenProcess);
@@ -571,7 +571,7 @@ ULONG ExCopyThreadList2Buffer(PTHREAD_INFO ThreadInfo)
 //////////////////////////////////////////////////////////////////////////
 
 //
-// ¸ù¾İÏß³ÌĞÅÏ¢²éÕÒÆäËùÊô½ø³ÌĞÅÏ¢
+// æ ¹æ®çº¿ç¨‹ä¿¡æ¯æŸ¥æ‰¾å…¶æ‰€å±è¿›ç¨‹ä¿¡æ¯
 //
 PEPROCESS ScPsGetThreadProcess(PETHREAD Thread)
 {
@@ -623,10 +623,10 @@ PEPROCESS ScPsGetSystemIdleProcess()
 ULONG 
 ScPsGetCsrssProcessId()
 /*++
-    ÔÚvistaÖĞÓÃZwDuplicateObject¸´ÖÆcsrss.exeÖĞALPC PortÀàĞÍµÄ¾ä±ú»á·µ»ØC00000BB.
-    ÏÖÔÚ²ÉÓÃ±äÍ¨µÄ·½·¨:ÓÃZwQuerySystemInformationµÃµ½¾ä±ú±í£¬ÔÙ¸ù¾İ±íÖĞµÄProcessIdÓÃ
-    sLookupProcessByProcessIdµÃµ½peProcess,È»ºóKeAttachProcess(peProcess)Àï£¬ÔÙÓÃ
-    ObReferenceObjectByHandleµÃµ½objÕâÑù¾Í¿ÉÒÔÓÃObQueryNameStringµÃµ½¾ä±úÃû³ÆÁË 
+    åœ¨vistaä¸­ç”¨ZwDuplicateObjectå¤åˆ¶csrss.exeä¸­ALPC Portç±»å‹çš„å¥æŸ„ä¼šè¿”å›C00000BB.
+    ç°åœ¨é‡‡ç”¨å˜é€šçš„æ–¹æ³•:ç”¨ZwQuerySystemInformationå¾—åˆ°å¥æŸ„è¡¨ï¼Œå†æ ¹æ®è¡¨ä¸­çš„ProcessIdç”¨
+    sLookupProcessByProcessIdå¾—åˆ°peProcess,ç„¶åKeAttachProcess(peProcess)é‡Œï¼Œå†ç”¨
+    ObReferenceObjectByHandleå¾—åˆ°objè¿™æ ·å°±å¯ä»¥ç”¨ObQueryNameStringå¾—åˆ°å¥æŸ„åç§°äº† 
 --*/
 {
     NTSTATUS ntStatus;

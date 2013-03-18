@@ -16,7 +16,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// ÷–Œƒ(÷–ª™»À√Òπ≤∫Õπ˙) resources
+// ‰∏≠Êñá(‰∏≠Âçé‰∫∫Ê∞ëÂÖ±ÂíåÂõΩ) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -54,8 +54,8 @@ BEGIN
     "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
     "LANGUAGE 4, 2\r\n"
     "#pragma code_page(936)\r\n"
-    "#include ""res\\ScDetective.rc2""  // ∑« Microsoft Visual C++ ±‡º≠µƒ◊ ‘¥\r\n"
-    "#include ""l.CHS\\afxres.rc""      // ±Í◊º◊Èº˛\r\n"
+    "#include ""res\\ScDetective.rc2""  // Èùû Microsoft Visual C++ ÁºñËæëÁöÑËµÑÊ∫ê\r\n"
+    "#include ""l.CHS\\afxres.rc""      // Ê†áÂáÜÁªÑ‰ª∂\r\n"
     "#endif\r\n"
     "\0"
 END
@@ -86,20 +86,20 @@ IDI_REMOVEABLE          ICON                    "res\\remove.ico"
 
 IDD_ABOUTBOX DIALOGEX 0, 0, 170, 62
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "πÿ”⁄ ScDetective"
-FONT 9, "ÀŒÃÂ", 0, 0, 0x1
+CAPTION "ÂÖ≥‰∫é ScDetective"
+FONT 9, "ÂÆã‰Ωì", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,14,14,21,20
-    LTEXT           "ScDetective£¨1.0 ∞Ê",IDC_STATIC,42,14,114,8,SS_NOPREFIX
+    LTEXT           "ScDetectiveÔºå1.0 Áâà",IDC_STATIC,42,14,114,8,SS_NOPREFIX
     LTEXT           "Copyright (C) 2010",IDC_STATIC,42,26,114,8
-    DEFPUSHBUTTON   "»∑∂®",IDOK,113,41,50,14,WS_GROUP
+    DEFPUSHBUTTON   "Á°ÆÂÆö",IDOK,113,41,50,14,WS_GROUP
 END
 
 IDD_SCDETECTIVE_DIALOG DIALOGEX 0, 0, 561, 339
 STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "ScDetective"
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_TAB_PAGE,"SysTabControl32",TCS_MULTILINE | WS_GROUP,7,7,500,310,WS_EX_TRANSPARENT
     LTEXT           " ",IDC_STATUS_TEXT,8,318,482,14
@@ -107,80 +107,80 @@ END
 
 IDD_SSDT DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST1,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,540,295
 END
 
 IDD_SSDTSHADOW DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST2,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,540,295
 END
 
 IDD_PAGE_R3HOOK DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_TAB1,"SysTabControl32",TCS_MULTILINE | WS_GROUP,0,0,547,298,WS_EX_TRANSPARENT
 END
 
 IDD_PAGE_PROCESS DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST4,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,540,295
 END
 
 IDD_PAGE_DRIVEROBJECT DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST5,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,540,295
 END
 
 IDD_MSGHOOK DIALOGEX 0, 0, 555, 291
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST_MSGHOOK,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,540,280
 END
 
 IDD_SYSROUTINE DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST_SYSROUTINE,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,540,280
 END
 
 IDD_PROCESS_THREADS DIALOGEX 0, 0, 364, 191
 STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Ω¯≥Ãœﬂ≥Ã–≈œ¢"
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+CAPTION "ËøõÁ®ãÁ∫øÁ®ã‰ø°ÊÅØ"
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST_PROCESS_THREADS,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,350,177
 END
 
 IDD_PROCESS_MODULES DIALOGEX 0, 0, 364, 191
 STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Ω¯≥Ãƒ£øÈ–≈œ¢"
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+CAPTION "ËøõÁ®ãÊ®°Âùó‰ø°ÊÅØ"
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST_PROCESS_MODULES,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,350,177
 END
 
 IDD_PROCESS_HANDLES DIALOGEX 0, 0, 364, 191
 STYLE DS_SETFONT | DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Ω¯≥Ãæ‰±˙–≈œ¢"
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+CAPTION "ËøõÁ®ãÂè•ÊüÑ‰ø°ÊÅØ"
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_LIST_PROCESS_HANDLES,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,7,7,350,177
 END
 
 IDD_PAGE_FILE DIALOGEX 0, 0, 580, 320
 STYLE DS_SETFONT | WS_CHILD
-FONT 9, "ÀŒÃÂ", 400, 0, 0x86
+FONT 9, "ÂÆã‰Ωì", 400, 0, 0x86
 BEGIN
     CONTROL         "",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,7,142,303
     CONTROL         "",IDC_LIST6,"SysListView32",LVS_REPORT | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,150,7,395,303
@@ -258,14 +258,14 @@ IDR_MENU1_SSDT MENU
 BEGIN
     POPUP "menu"
     BEGIN
-        MENUITEM "À¢–¬",                          ID_MENU_32771
+        MENUITEM "Âà∑Êñ∞",                          ID_MENU_32771
         MENUITEM SEPARATOR
-        MENUITEM "ª÷∏¥",                          ID_MENU_32772
-        MENUITEM "ª÷∏¥À˘”–",                        ID_MENU_32773
+        MENUITEM "ÊÅ¢Â§ç",                          ID_MENU_32772
+        MENUITEM "ÊÅ¢Â§çÊâÄÊúâ",                        ID_MENU_32773
         MENUITEM SEPARATOR
-        MENUITEM "≤Èø¥ƒ£øÈ Ù–‘",                      ID_MENU_32775
+        MENUITEM "Êü•ÁúãÊ®°ÂùóÂ±ûÊÄß",                      ID_MENU_32775
         MENUITEM SEPARATOR
-        MENUITEM "∂®ŒªµΩŒƒº˛",                       ID_MENU_32774
+        MENUITEM "ÂÆö‰ΩçÂà∞Êñá‰ª∂",                       ID_MENU_32774
     END
 END
 
@@ -273,14 +273,14 @@ IDR_MENU2_SSDT_SHADOW MENU
 BEGIN
     POPUP "menu"
     BEGIN
-        MENUITEM "À¢–¬",                          ID_MENU_32776
+        MENUITEM "Âà∑Êñ∞",                          ID_MENU_32776
         MENUITEM SEPARATOR
-        MENUITEM "ª÷∏¥",                          ID_MENU_32777
-        MENUITEM "ª÷∏¥À˘”–",                        ID_MENU_32778
+        MENUITEM "ÊÅ¢Â§ç",                          ID_MENU_32777
+        MENUITEM "ÊÅ¢Â§çÊâÄÊúâ",                        ID_MENU_32778
         MENUITEM SEPARATOR
-        MENUITEM "≤Èø¥ƒ£øÈ Ù–‘",                      ID_MENU_32779
+        MENUITEM "Êü•ÁúãÊ®°ÂùóÂ±ûÊÄß",                      ID_MENU_32779
         MENUITEM SEPARATOR
-        MENUITEM "∂®ŒªµΩŒƒº˛",                       ID_MENU_32780
+        MENUITEM "ÂÆö‰ΩçÂà∞Êñá‰ª∂",                       ID_MENU_32780
     END
 END
 
@@ -288,13 +288,13 @@ IDR_MENU4_PROCESS MENU
 BEGIN
     POPUP "menu"
     BEGIN
-        MENUITEM "À¢–¬",                          ID_MENU_32781
+        MENUITEM "Âà∑Êñ∞",                          ID_MENU_32781
         MENUITEM SEPARATOR
-        MENUITEM "≤Èø¥Ω¯≥Ãƒ£øÈ",                      ID_MENU_32783
-        MENUITEM "≤Èø¥Ω¯≥Ãœﬂ≥Ã",                      ID_MENU_32784
-        MENUITEM "≤Èø¥Ω¯≥Ãæ‰±˙",                      ID_MENU_32785
+        MENUITEM "Êü•ÁúãËøõÁ®ãÊ®°Âùó",                      ID_MENU_32783
+        MENUITEM "Êü•ÁúãËøõÁ®ãÁ∫øÁ®ã",                      ID_MENU_32784
+        MENUITEM "Êü•ÁúãËøõÁ®ãÂè•ÊüÑ",                      ID_MENU_32785
         MENUITEM SEPARATOR
-        MENUITEM "∂®ŒªµΩŒƒº˛",                       ID_MENU_32782
+        MENUITEM "ÂÆö‰ΩçÂà∞Êñá‰ª∂",                       ID_MENU_32782
     END
 END
 
@@ -302,7 +302,7 @@ IDR_MENU5_DRIVER MENU
 BEGIN
     POPUP "menu"
     BEGIN
-        MENUITEM "À¢–¬",                          ID_MENU_32786
+        MENUITEM "Âà∑Êñ∞",                          ID_MENU_32786
     END
 END
 
@@ -310,11 +310,11 @@ IDR_MENU3_MSGHOOK MENU
 BEGIN
     POPUP "menu"
     BEGIN
-        MENUITEM "À¢–¬",                          ID_MENU_32787
+        MENUITEM "Âà∑Êñ∞",                          ID_MENU_32787
         MENUITEM SEPARATOR
-        MENUITEM "–∂‘ÿ",                          ID_MENU_32787
+        MENUITEM "Âç∏ËΩΩ",                          ID_MENU_32787
         MENUITEM SEPARATOR
-        MENUITEM "∂®ŒªµΩŒƒº˛",                       ID_MENU_32789
+        MENUITEM "ÂÆö‰ΩçÂà∞Êñá‰ª∂",                       ID_MENU_32789
     END
 END
 
@@ -326,10 +326,10 @@ END
 
 STRINGTABLE 
 BEGIN
-    IDS_ABOUTBOX            "πÿ”⁄ ScDetective(&A)..."
+    IDS_ABOUTBOX            "ÂÖ≥‰∫é ScDetective(&A)..."
 END
 
-#endif    // ÷–Œƒ(÷–ª™»À√Òπ≤∫Õπ˙) resources
+#endif    // ‰∏≠Êñá(‰∏≠Âçé‰∫∫Ê∞ëÂÖ±ÂíåÂõΩ) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
@@ -347,8 +347,8 @@ END
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 LANGUAGE 4, 2
 #pragma code_page(936)
-#include "res\ScDetective.rc2"  // ∑« Microsoft Visual C++ ±‡º≠µƒ◊ ‘¥
-#include "l.CHS\afxres.rc"      // ±Í◊º◊Èº˛
+#include "res\ScDetective.rc2"  // Èùû Microsoft Visual C++ ÁºñËæëÁöÑËµÑÊ∫ê
+#include "l.CHS\afxres.rc"      // Ê†áÂáÜÁªÑ‰ª∂
 #endif
 
 /////////////////////////////////////////////////////////////////////////////

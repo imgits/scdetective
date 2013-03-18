@@ -5,21 +5,21 @@
 #define PAGE_R3_NUMBER      2
 
 //////////////////////////////////////////////////////////////////////////
-// CMsgHook ¶Ô»°¿ò
+// CMsgHook å¯¹è¯æ¡†
 
 class CMsgHook : public CDialog
 {
     DECLARE_DYNAMIC(CMsgHook)
 
 public:
-    CMsgHook(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CMsgHook(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CMsgHook();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_MSGHOOK };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 private:
@@ -38,41 +38,41 @@ public:
 };
 
 //////////////////////////////////////////////////////////////////////////
-// CSystemRoutine ¶Ô»°¿ò
+// CSystemRoutine å¯¹è¯æ¡†
 
 class CSystemRoutine : public CDialog
 {
     DECLARE_DYNAMIC(CSystemRoutine)
 
 public:
-    CSystemRoutine(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CSystemRoutine(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CSystemRoutine();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_SYSROUTINE };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 };
 
 //////////////////////////////////////////////////////////////////////////
-// CPage3 ¶Ô»°¿ò
+// CPage3 å¯¹è¯æ¡†
 
 class CPage3 : public CDialog
 {
     DECLARE_DYNAMIC(CPage3)
 
 public:
-    CPage3(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+    CPage3(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
     virtual ~CPage3();
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_PAGE_R3HOOK };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
     DECLARE_MESSAGE_MAP()
 
@@ -157,16 +157,16 @@ typedef struct THRDESKHEAD {
 }THRDESKHEAD;
 
 typedef struct _HOOK_INFO {
-    HANDLE  hHook;                                //¹³×ÓµÄ¾ä±ú
+    HANDLE  hHook;                                //é’©å­çš„å¥æŸ„
     DWORD   Unknown1;
-    PVOID   Win32Thread;                            //Ò»¸öÖ¸Ïò win32k!_W32THREAD ½á¹¹ÌåµÄÖ¸Õë
+    PVOID   Win32Thread;                            //ä¸€ä¸ªæŒ‡å‘ win32k!_W32THREAD ç»“æ„ä½“çš„æŒ‡é’ˆ
     PVOID   Unknown2;
-    PVOID   SelfHook;                               //Ö¸Ïò½á¹¹ÌåµÄÊ×µØÖ·
-    PVOID   NextHook;                               //Ö¸ÏòÏÂÒ»¸ö¹³×Ó½á¹¹Ìå
-    int     HookType;                              //¹³×ÓµÄÀàĞÍ£¬ winuser.h ÖĞÓĞ¶¨Òå
-    DWORD   OffPfn;                                 //¹³×Óº¯ÊıµÄµØÖ·Æ«ÒÆ£¬Ïà¶ÔÓÚËùÔÚÄ£¿éµÄÆ«ÒÆ
+    PVOID   SelfHook;                               //æŒ‡å‘ç»“æ„ä½“çš„é¦–åœ°å€
+    PVOID   NextHook;                               //æŒ‡å‘ä¸‹ä¸€ä¸ªé’©å­ç»“æ„ä½“
+    int     HookType;                              //é’©å­çš„ç±»å‹ï¼Œ winuser.h ä¸­æœ‰å®šä¹‰
+    DWORD   OffPfn;                                 //é’©å­å‡½æ•°çš„åœ°å€åç§»ï¼Œç›¸å¯¹äºæ‰€åœ¨æ¨¡å—çš„åç§»
     int     iHookFlags;
-    int     iMod;                                   //¹³×Óº¯Êı×öÔÚÄ£¿éµÄË÷ÒıºÅÂë£¬Í¨¹ı²éÑ¯ WowProcess ½á¹¹¿ÉÒÔµÃµ½Ä£¿éµÄ»ùµØÖ·¡£
+    int     iMod;                                   //é’©å­å‡½æ•°åšåœ¨æ¨¡å—çš„ç´¢å¼•å·ç ï¼Œé€šè¿‡æŸ¥è¯¢ WowProcess ç»“æ„å¯ä»¥å¾—åˆ°æ¨¡å—çš„åŸºåœ°å€ã€‚
     PVOID   Win32ThreadHooked;        
 } HOOK_INFO, * PHOOK_INFO ;
 

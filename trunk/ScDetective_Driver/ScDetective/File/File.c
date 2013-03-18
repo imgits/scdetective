@@ -366,7 +366,7 @@ SKillStripFileAttributes(
         *IoFileObjectType,
         KernelMode,
         &fileObject,
-        NULL);//ÎÒÏëÖªµÀµÄÊÇÕâ¸öÎÄ¼ş¾ä±úÊÇÔÚÄÄ¸ö½ø³ÌµÄ¾ä±ú±íÖĞ
+        NULL);//æˆ‘æƒ³çŸ¥é“çš„æ˜¯è¿™ä¸ªæ–‡ä»¶å¥æŸ„æ˜¯åœ¨å“ªä¸ªè¿›ç¨‹çš„å¥æŸ„è¡¨ä¸­
 
     if (!NT_SUCCESS(ntStatus))
     {
@@ -410,14 +410,14 @@ SKillStripFileAttributes(
         TRUE,
         TRUE);
 
-    IoCallDriver(DeviceObject, Irp);//µ÷ÓÃÕâ¸öÉè±¸¶ÔÏóµÄÇı¶¯¶ÔÏó£¬²¢ÇÒ£É£Ï£ß£Ó£ô£Á£Ã£Ë£ß£Ì£Ï£Ã£Á£ô£é£ï£î»áÖ¸ÏòÏÂÒ»¸ö£¬Ò²¾ÍÊÇ¸Õ¸ÕÉèÖÃµÄ
-    ¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡//Èç¹ûÃ»ÓĞÎÄ¼şÏµÍ³Çı¶¯½¨Á¢µÄÉè±¸¶ÔÏóÃ»ÓĞAttackedµÄ»°£¬¾Íµ÷ÓÃÎÄ¼şÏµÍ³Çı¶¯µÄIRP_MJ_SET_INFORMATION·ÖÅÉÀı³Ì
+    IoCallDriver(DeviceObject, Irp);//è°ƒç”¨è¿™ä¸ªè®¾å¤‡å¯¹è±¡çš„é©±åŠ¨å¯¹è±¡ï¼Œå¹¶ä¸”ï¼©ï¼¯ï¼¿ï¼³ï½”ï¼¡ï¼£ï¼«ï¼¿ï¼¬ï¼¯ï¼£ï¼¡ï½”ï½‰ï½ï½ä¼šæŒ‡å‘ä¸‹ä¸€ä¸ªï¼Œä¹Ÿå°±æ˜¯åˆšåˆšè®¾ç½®çš„
+    ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€ã€€//å¦‚æœæ²¡æœ‰æ–‡ä»¶ç³»ç»Ÿé©±åŠ¨å»ºç«‹çš„è®¾å¤‡å¯¹è±¡æ²¡æœ‰Attackedçš„è¯ï¼Œå°±è°ƒç”¨æ–‡ä»¶ç³»ç»Ÿé©±åŠ¨çš„IRP_MJ_SET_INFORMATIONåˆ†æ´¾ä¾‹ç¨‹
 
 
-    //»áµ÷ÓÃNTFS.sysÇı¶¯µÄNtfsFsdSetInformationÀı³Ì£¬ÔÙ»á½øÈëNtfsSetBasicInfo£¨£©º¯Êı£¬×îºóËü»áÉèÖÃ´ú±í´ËÎÄ¼şµÄFCB£¨ÎÄ¼ş
-    //¿ØÖÆ¿é½á¹¹µÄÒ»Ğ©ĞÅÏ¢£¬ÓÃÀ´ÉèÖÃ´ú±í´ËÎÄ¼şµÄÊôĞÔ¡£×îºó²»ÖªµÀÔÚÄÄÀï»áµ÷ÓÃIoCompleteRequest,Ëü»áÒÀ´Îµ÷ÓÃÏÈÇ°ÉèÖÃµÄ»Øµ÷º¯Êı
-    //»Øµ÷º¯Êı»áÊÍ·Å¸Õ·ÖÅäµÄIRPºÍÉèÖÃÊÂ¼ş¶ÔÏóÎªÊÜĞÅ×´Ì¬¡£
-    KeWaitForSingleObject(&event1, Executive, KernelMode, TRUE, NULL);//Ò»µÈµ½ÊÂ¼ş¶ÔÏó±ä³ÉÊÜĞÅ×´Ì¬¾Í»á¼ÌĞøÏòÏÂÖ´ĞĞ¡£
+    //ä¼šè°ƒç”¨NTFS.sysé©±åŠ¨çš„NtfsFsdSetInformationä¾‹ç¨‹ï¼Œå†ä¼šè¿›å…¥NtfsSetBasicInfoï¼ˆï¼‰å‡½æ•°ï¼Œæœ€åå®ƒä¼šè®¾ç½®ä»£è¡¨æ­¤æ–‡ä»¶çš„FCBï¼ˆæ–‡ä»¶
+    //æ§åˆ¶å—ç»“æ„çš„ä¸€äº›ä¿¡æ¯ï¼Œç”¨æ¥è®¾ç½®ä»£è¡¨æ­¤æ–‡ä»¶çš„å±æ€§ã€‚æœ€åä¸çŸ¥é“åœ¨å“ªé‡Œä¼šè°ƒç”¨IoCompleteRequest,å®ƒä¼šä¾æ¬¡è°ƒç”¨å…ˆå‰è®¾ç½®çš„å›è°ƒå‡½æ•°
+    //å›è°ƒå‡½æ•°ä¼šé‡Šæ”¾åˆšåˆ†é…çš„IRPå’Œè®¾ç½®äº‹ä»¶å¯¹è±¡ä¸ºå—ä¿¡çŠ¶æ€ã€‚
+    KeWaitForSingleObject(&event1, Executive, KernelMode, TRUE, NULL);//ä¸€ç­‰åˆ°äº‹ä»¶å¯¹è±¡å˜æˆå—ä¿¡çŠ¶æ€å°±ä¼šç»§ç»­å‘ä¸‹æ‰§è¡Œã€‚
 
     ObDereferenceObject(fileObject);
 
@@ -440,7 +440,7 @@ SKillDeleteFile(
     PIO_STACK_LOCATION irpSp;
     PSECTION_OBJECT_POINTERS pSectionObjectPointer;     ////////////////////
 
-    SKillStripFileAttributes( FileHandle);          //È¥µôÖ»¶ÁÊôĞÔ£¬²ÅÄÜÉ¾³ıÖ»¶ÁÎÄ¼ş
+    SKillStripFileAttributes( FileHandle);          //å»æ‰åªè¯»å±æ€§ï¼Œæ‰èƒ½åˆ é™¤åªè¯»æ–‡ä»¶
 
     ntStatus = ObReferenceObjectByHandle(FileHandle,
         DELETE,
@@ -454,9 +454,9 @@ SKillDeleteFile(
         return FALSE;
     }
 
-    DeviceObject = IoGetRelatedDeviceObject(fileObject);//Èç¹ûNTFS.sysÇı¶¯½¨Á¢µÄÉè±¸¶ÔÏóÉÏÃ»ÓĞ¸½¼ÓµÄÉè±¸¶ÔÏóµÄ»°£¬¾Í·µ»ØNTFS.sys½¨Á¢µÄÉè±¸¶ÔÏó
-    //·ñÔò·µ»ØµÄÊÇÕâ¸öÉè±¸¶ÔÏóµÄhighest levelÉè±¸¶ÔÏó¡£
-    Irp = IoAllocateIrp(DeviceObject->StackSize, TRUE);//Èç¹ûÃ»ÓĞ¸½¼Ó£¬StackSizeÎª7
+    DeviceObject = IoGetRelatedDeviceObject(fileObject);//å¦‚æœNTFS.sysé©±åŠ¨å»ºç«‹çš„è®¾å¤‡å¯¹è±¡ä¸Šæ²¡æœ‰é™„åŠ çš„è®¾å¤‡å¯¹è±¡çš„è¯ï¼Œå°±è¿”å›NTFS.syså»ºç«‹çš„è®¾å¤‡å¯¹è±¡
+    //å¦åˆ™è¿”å›çš„æ˜¯è¿™ä¸ªè®¾å¤‡å¯¹è±¡çš„highest levelè®¾å¤‡å¯¹è±¡ã€‚
+    Irp = IoAllocateIrp(DeviceObject->StackSize, TRUE);//å¦‚æœæ²¡æœ‰é™„åŠ ï¼ŒStackSizeä¸º7
 
     if (Irp == NULL)
     {
@@ -475,7 +475,7 @@ SKillDeleteFile(
     Irp->Tail.Overlay.Thread = (PETHREAD)KeGetCurrentThread();
     Irp->RequestorMode = KernelMode;
 
-    irpSp = IoGetNextIrpStackLocation(Irp);            //µÃµ½ÎÄ¼şÏµÍ³NTFS.sysÇı¶¯µÄÉè±¸IO_STACK_LOCATION
+    irpSp = IoGetNextIrpStackLocation(Irp);            //å¾—åˆ°æ–‡ä»¶ç³»ç»ŸNTFS.sysé©±åŠ¨çš„è®¾å¤‡IO_STACK_LOCATION
     irpSp->MajorFunction = IRP_MJ_SET_INFORMATION;
     irpSp->DeviceObject = DeviceObject;
     irpSp->FileObject = fileObject;
@@ -492,16 +492,16 @@ SKillDeleteFile(
         TRUE,
         TRUE);
 
-    //ÔÙ¼ÓÉÏÏÂÃæÕâÈıĞĞ´úÂë £¬MmFlushImageSection    º¯ÊıÍ¨¹ıÕâ¸ö½á¹¹À´¼ì²éÊÇ·ñ¿ÉÒÔÉ¾³ıÎÄ¼ş¡£
+    //å†åŠ ä¸Šä¸‹é¢è¿™ä¸‰è¡Œä»£ç  ï¼ŒMmFlushImageSection    å‡½æ•°é€šè¿‡è¿™ä¸ªç»“æ„æ¥æ£€æŸ¥æ˜¯å¦å¯ä»¥åˆ é™¤æ–‡ä»¶ã€‚
     pSectionObjectPointer = fileObject->SectionObjectPointer;
     pSectionObjectPointer->ImageSectionObject = 0;
     pSectionObjectPointer->DataSectionObject = 0;
 
 
-    IoCallDriver(DeviceObject, Irp);//ÕâÀï»áÒÀ´Î½øÈëNTFS.sysÇı¶¯µÄNtfsFsdSetInformationÀı³Ì->NtfsSetDispositionInfo£¨£©->MmFlushImageSection(),
-    //MmFlushImageSection£¨£©Õâº¯ÊıÊÇÓÃÀ´¼ì²éFILE_OBJECT¶ÔÏóµÄSECTION_OBJECT_POINTER½á¹¹µÄ±äÁ¿£¬¼ì²éÕâ¸öÎÄ¼ş
-    //ÔÚÄÚ´æÓĞÃ»ÓĞ±»Ó³Éä¡£Ò²¾ÍÊÇÓĞÃ»ÓĞÖ´ĞĞ¡£Èç¹ûÉÏÃæÄÇÑùÉèÖÃÁË£¬Ò²¾ÍÊÇËµÎÄ¼ş¿ÉÒÔÉ¾³ıÁË¡£ÎÒÃÇÒ²¿ÉÒÔHOOK NTFS.sysµ¼Èë±íÖĞµÄ
-    //µÄMmFlushImageSection£¨£©£¬À´¼ì²éÕâ¸öÎÄ¼ş¶ÔÏóÊÇ²»ÊÇÎÒÃÇÒªÉ¾³ı µÄ£¬ÊÇµÄ»°£¬·µ»ØTRUE¾ÍĞĞÁË¡£
+    IoCallDriver(DeviceObject, Irp);//è¿™é‡Œä¼šä¾æ¬¡è¿›å…¥NTFS.sysé©±åŠ¨çš„NtfsFsdSetInformationä¾‹ç¨‹->NtfsSetDispositionInfoï¼ˆï¼‰->MmFlushImageSection(),
+    //MmFlushImageSectionï¼ˆï¼‰è¿™å‡½æ•°æ˜¯ç”¨æ¥æ£€æŸ¥FILE_OBJECTå¯¹è±¡çš„SECTION_OBJECT_POINTERç»“æ„çš„å˜é‡ï¼Œæ£€æŸ¥è¿™ä¸ªæ–‡ä»¶
+    //åœ¨å†…å­˜æœ‰æ²¡æœ‰è¢«æ˜ å°„ã€‚ä¹Ÿå°±æ˜¯æœ‰æ²¡æœ‰æ‰§è¡Œã€‚å¦‚æœä¸Šé¢é‚£æ ·è®¾ç½®äº†ï¼Œä¹Ÿå°±æ˜¯è¯´æ–‡ä»¶å¯ä»¥åˆ é™¤äº†ã€‚æˆ‘ä»¬ä¹Ÿå¯ä»¥HOOK NTFS.syså¯¼å…¥è¡¨ä¸­çš„
+    //çš„MmFlushImageSectionï¼ˆï¼‰ï¼Œæ¥æ£€æŸ¥è¿™ä¸ªæ–‡ä»¶å¯¹è±¡æ˜¯ä¸æ˜¯æˆ‘ä»¬è¦åˆ é™¤ çš„ï¼Œæ˜¯çš„è¯ï¼Œè¿”å›TRUEå°±è¡Œäº†ã€‚
     KeWaitForSingleObject(&event1, Executive, KernelMode, TRUE, NULL);
 
     ObDereferenceObject(fileObject);
@@ -548,11 +548,11 @@ NTSTATUS DriverEntry(
     DriverObject->DriverUnload = SKillUnloadDriver;
 
     //
-    // ÖØµãÔÚÕâ
+    // é‡ç‚¹åœ¨è¿™
     //
     hFileHandle = SkillIoOpenFile(L"\\Device\\HarddiskVolume1\\test.exe", 
         FILE_READ_ATTRIBUTES,
-        FILE_SHARE_DELETE);   //µÃµ½ÎÄ¼ş¾ä±ú
+        FILE_SHARE_DELETE);   //å¾—åˆ°æ–‡ä»¶å¥æŸ„
 
     if (hFileHandle!=NULL)
     {

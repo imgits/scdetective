@@ -7,8 +7,8 @@
 #define OBJECT_HEADER_SIZE      0x018
 #define OBJECT_TYPE_OFFSET      0x008
 
-WCHAR ThreadState[9][4] = { L"预置", L"就绪", L"运行", L"待命", 
-                            L"终止", L"等待", L"切换", L"-", L"-" };
+WCHAR ThreadState[9][4] = { L"棰勭疆", L"灏辩华", L"杩愯", L"寰呭懡", 
+                            L"缁堟", L"绛夊緟", L"鍒囨崲", L"-", L"-" };
 
 typedef struct _THREAD_CONTEXT {
     PEPROCESS   Process;

@@ -25,33 +25,33 @@
     CTL_CODE(FILE_DEVICE_SEDECTIVE, IOCTL_BASE + i, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 
-// ��ȡ ssdt �ṹ
+// 获取 ssdt 结构
 #define IOCTL_GET_SSDT                  TEMPLATE_CTL_CODE(0x01)
-// �ָ� ssdt
+// 恢复 ssdt
 #define IOCTL_UNHOOK_SSDT               TEMPLATE_CTL_CODE(0x02)
-// ��ȡ Shadow ssdt �ṹ
+// 获取 Shadow ssdt 结构
 #define IOCTL_GET_SSDTSHADOW            TEMPLATE_CTL_CODE(0x03)
-// �ָ� Shadow ssdt
+// 恢复 Shadow ssdt
 #define IOCTL_UNHOOK_SSDTSHADOW         TEMPLATE_CTL_CODE(0x04)
-// ���� PspCidTable ö�ٽ��� && ���������ڴ��ȡ���� 
+// 搜索 PspCidTable 枚举进程 && 暴力搜索内存获取进程 
 #define IOCTL_GET_PROCESSES             TEMPLATE_CTL_CODE(0x06)
-// ����EPROCESS��ȡ����dos·��
+// 根据EPROCESS获取进程dos路径
 #define IOCTL_GET_PROCESS_IMAGE_PATH    TEMPLATE_CTL_CODE(0x07)
-// �鿴���̼���ģ����Ϣ
+// 查看进程加载模块信息
 #define IOCTL_GET_PROCESS_MODULES       TEMPLATE_CTL_CODE(0x08)
-// �鿴�����߳���Ϣ, ��Ҫ������������
+// 查看进程线程信息, 需要两次连续调用
 #define IOCTL_GET_PROCESS_THREADS       TEMPLATE_CTL_CODE(0x09)
-// ��ȡ���̾��
+// 获取进程句柄
 #define IOCTL_GET_PROCESS_HANDLES       TEMPLATE_CTL_CODE(0x0A)
-// ��ȡ�ں�ģ����Ϣ
+// 获取内核模块信息
 #define IOCTL_GET_DRIVER_OBJECT         TEMPLATE_CTL_CODE(0x11)
-// ��ȡ�ں˵�ַ����
+// 读取内核地址数据
 #define IOCTL_DUMP_KERNEL_MEMORY        TEMPLATE_CTL_CODE(0x12)
-// ���ұ���ģ��
+// 自我保护模块
 #define IOCTL_PROTECT_MYSELF            TEMPLATE_CTL_CODE(0x13)
-// �˳�ʱ����ģ��
+// 退出时清理模块
 #define IOCTL_EXIT_PROCESS              TEMPLATE_CTL_CODE(0x14)
-// ��ȡָ��Ŀ¼���ļ���Ϣ������Ŀ¼
+// 获取指定目录下文件信息包括子目录
 #define IOCTL_LIST_DIRECTORY            TEMPLATE_CTL_CODE(0x15)
 
 //////////////////////////////////////////////////////////////////////////

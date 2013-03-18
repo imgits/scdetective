@@ -117,7 +117,7 @@ NTSTATUS ScDetective_DispatchDeviceControl(
                 }
             }
         //////////////////////////////////////////////////////////////////////////
-        case IOCTL_GET_SSDT:    // ªÒ»° ssdt
+        case IOCTL_GET_SSDT:    // Ëé∑Âèñ ssdt
             {         
                 ULONG NeedLen = 0;
                 ULONG Number = GetSsdtServiceNumber();
@@ -137,21 +137,21 @@ NTSTATUS ScDetective_DispatchDeviceControl(
                 break;
             } 
         //////////////////////////////////////////////////////////////////////////
-        case IOCTL_UNHOOK_SSDT:          // ª÷∏¥ ssdt
+        case IOCTL_UNHOOK_SSDT:          // ÊÅ¢Â§ç ssdt
             {
                 PSSDT_ADDRESS SsdtOrig = (PSSDT_ADDRESS)InputBuffer;
 
                 if (cbInputBuffer < sizeof(SSDT_ADDRESS) || 
                     InputBuffer == NULL) {
-                    KdPrint((" ‰»Îª∫≥Â«¯ªÚ ‰»Îª∫≥Â«¯≥§∂»Œﬁ–ß"));
+                    KdPrint(("ËæìÂÖ•ÁºìÂÜ≤Âå∫ÊàñËæìÂÖ•ÁºìÂÜ≤Âå∫ÈïøÂ∫¶Êó†Êïà"));
                     ntStatus = STATUS_UNSUCCESSFUL;
                     break;
                 }
-                KdPrint(("“™ª÷∏¥µƒ∑˛ŒÒ∫≈£∫%d ‘≠ ºµÿ÷∑£∫0x%X", 
+                KdPrint(("Ë¶ÅÊÅ¢Â§çÁöÑÊúçÂä°Âè∑Ôºö%d ÂéüÂßãÂú∞ÂùÄÔºö0x%X", 
                     SsdtOrig->nIndex, SsdtOrig->FunAddress));
 
                 if (!UnHookSsdtItem(SsdtOrig)) {
-                    KdPrint(("ª÷∏¥ ß∞‹"));
+                    KdPrint(("ÊÅ¢Â§çÂ§±Ë¥•"));
                     ntStatus = STATUS_UNSUCCESSFUL;
                 }
                 break;
@@ -184,10 +184,10 @@ NTSTATUS ScDetective_DispatchDeviceControl(
 
                 if (cbInputBuffer < sizeof(SSDT_ADDRESS) || 
                     InputBuffer == NULL) {
-                    KdPrint((" ‰»Îª∫≥Â«¯ªÚ ‰»Îª∫≥Â«¯≥§∂»Œﬁ–ß"));
+                    KdPrint(("ËæìÂÖ•ÁºìÂÜ≤Âå∫ÊàñËæìÂÖ•ÁºìÂÜ≤Âå∫ÈïøÂ∫¶Êó†Êïà"));
                     ntStatus = STATUS_UNSUCCESSFUL;  break;
                 }
-                KdPrint(("“™ª÷∏¥µƒ∑˛ŒÒ∫≈£∫%d ‘≠ ºµÿ÷∑£∫0x%X", 
+                KdPrint(("Ë¶ÅÊÅ¢Â§çÁöÑÊúçÂä°Âè∑Ôºö%d ÂéüÂßãÂú∞ÂùÄÔºö0x%X", 
                     ShadowSsdtOrig->nIndex, ShadowSsdtOrig->FunAddress));
 
                 if (!UnHookShadowSsdtItem(ShadowSsdtOrig, g_CsrssProcess)) {

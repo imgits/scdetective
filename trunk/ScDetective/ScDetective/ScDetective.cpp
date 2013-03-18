@@ -1,5 +1,5 @@
 
-// ScDetect.cpp : ����Ӧ�ó��������Ϊ��
+// ScDetect.cpp : 定义应用程序的类行为。
 //
 
 #include "stdafx.h"
@@ -18,26 +18,26 @@ BEGIN_MESSAGE_MAP(CScDetectiveApp, CWinApp)
 END_MESSAGE_MAP()
 
 
-// CScDetectApp ����
+// CScDetectApp 构造
 
 CScDetectiveApp::CScDetectiveApp()
 {
-    // TODO: �ڴ˴����ӹ�����룬
-    // ��������Ҫ�ĳ�ʼ�������� InitInstance ��
+    // TODO: 在此处添加构造代码，
+    // 将所有重要的初始化放置在 InitInstance 中
 }
 
 //////////////////////////////////////////////////////////////////////////
-//  ȫ�ֱ���
+//  全局变量
 //////////////////////////////////////////////////////////////////////////
-CScDetectiveApp theApp;                         // Ψһ��һ�� CScDetectApp ����
+CScDetectiveApp theApp;                         // 唯一的一个 CScDetectApp 对象
 
-CDriver theDriver;                              // ȫ���豸����
+CDriver theDriver;                              // 全局设备对象
 
 #define LOAD_DRIVER
 
 //////////////////////////////////////////////////////////////////////////
 
-// CScDetectApp ��ʼ��
+// CScDetectApp 初始化
 
 BOOL CScDetectiveApp::InitInstance()
 {
@@ -52,23 +52,23 @@ BOOL CScDetectiveApp::InitInstance()
     case VER_WINDOWS7:
         break;
     default:
-        MessageBox(NULL, L"������֧������ʹ�õĲ���ϵͳ��", NULL, MB_OK);
+        MessageBox(NULL, L"本程序不支持您所使用的操作系统！", NULL, MB_OK);
         return FALSE;
     }
 
     INITCOMMONCONTROLSEX InitCtrls;
     InitCtrls.dwSize = sizeof(InitCtrls);
-    // ��������Ϊ��������Ҫ��Ӧ�ó�����ʹ�õ�
-    // �����ؼ��ࡣ
+    // 将它设置为包括所有要在应用程序中使用的
+    // 公共控件类。
     InitCtrls.dwICC = ICC_WIN95_CLASSES;
     InitCommonControlsEx(&InitCtrls);
 
     CWinApp::InitInstance();
 
-    SetRegistryKey(_T("Ӧ�ó��������ɵı���Ӧ�ó���"));
+    SetRegistryKey(_T("应用程序向导生成的本地应用程序"));
     
     //////////////////////////////////////////////////////////////////////////
-    // ��������
+    // 加载驱动
 #ifdef LOAD_DRIVER
     theDriver.LoadDriver(L"ScDetective.sys", L"ScDetective");
     ULONG ProcessId = GetCurrentProcessId();
@@ -83,23 +83,23 @@ BOOL CScDetectiveApp::InitInstance()
     INT_PTR nResponse = dlg.DoModal();
     if (nResponse == IDOK)
     {
-        // TODO: �ڴ˷��ô�����ʱ��
-        //  ��ȷ�������رնԻ���Ĵ���
+        // TODO: 在此放置处理何时用
+        //  “确定”来关闭对话框的代码
     }
     else if (nResponse == IDCANCEL)
     {
-        // TODO: �ڴ˷��ô�����ʱ��
-        //  ��ȡ�������رնԻ���Ĵ���
+        // TODO: 在此放置处理何时用
+        //  “取消”来关闭对话框的代码
     }
 
 #ifdef LOAD_DRIVER
-    // ж��ǰҪ����
+    // 卸载前要清理
     theDriver.IoControl(IOCTL_EXIT_PROCESS, NULL, 0, NULL, 0);
-    // ����ж��
+    // 驱动卸载
     theDriver.UnloadDriver();
 #endif
     
-    // ���ڶԻ����ѹرգ����Խ����� FALSE �Ա��˳�Ӧ�ó���
-    //  ����������Ӧ�ó������Ϣ�á�
+    // 由于对话框已关闭，所以将返回 FALSE 以便退出应用程序，
+    //  而不是启动应用程序的消息泵。
     return FALSE;
 }

@@ -1,5 +1,5 @@
 
-// ScDetectDlg.h : Í·ÎÄ¼ş
+// ScDetectDlg.h : å¤´æ–‡ä»¶
 //
 
 #pragma once
@@ -14,25 +14,25 @@
 
 #define SC_PAGE_NUM     6
 
-// CScDetectDlg ¶Ô»°¿ò
+// CScDetectDlg å¯¹è¯æ¡†
 class CScDetectiveDlg : public CDialog
 {
-    // ¹¹Ôì
+    // æ„é€ 
 public:
-    CScDetectiveDlg(CWnd* pParent = NULL);	// ±ê×¼¹¹Ôìº¯Êı
+    CScDetectiveDlg(CWnd* pParent = NULL);	// æ ‡å‡†æ„é€ å‡½æ•°
 
-    // ¶Ô»°¿òÊı¾İ
+    // å¯¹è¯æ¡†æ•°æ®
     enum { IDD = IDD_SCDETECTIVE_DIALOG };
 
 protected:
-    virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV Ö§³Ö
+    virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV æ”¯æŒ
 
 
-    // ÊµÏÖ
+    // å®ç°
 protected:
     HICON m_hIcon;
 
-    // Éú³ÉµÄÏûÏ¢Ó³Éäº¯Êı
+    // ç”Ÿæˆçš„æ¶ˆæ¯æ˜ å°„å‡½æ•°
     virtual BOOL OnInitDialog();
     afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
     afx_msg void OnPaint();

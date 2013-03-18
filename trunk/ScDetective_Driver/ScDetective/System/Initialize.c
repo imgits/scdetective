@@ -13,18 +13,18 @@ NTSTATUS GetWindowsVersion()
     pFnRtlGetVersion pfnRtlGetVersion = NULL; 
     g_WindowsVersion= WINDOWS_VERSION_NONE;
 
-    //»ñÈ¡ RtlGetVersion º¯ÊıµÄµØÖ·
+    //è·å– RtlGetVersion å‡½æ•°çš„åœ°å€
     RtlInitUnicodeString(&ustrFuncName, L"RtlGetVersion"); 
     pfnRtlGetVersion = MmGetSystemRoutineAddress(&ustrFuncName); 
 
-    //Èç¹û»ñÈ¡µ½ RtlGetVersion º¯ÊıµÄµØÖ· ÔòÖ±½Óµ÷ÓÃ¸Ãº¯Êı
+    //å¦‚æœè·å–åˆ° RtlGetVersion å‡½æ•°çš„åœ°å€ åˆ™ç›´æ¥è°ƒç”¨è¯¥å‡½æ•°
     if (pfnRtlGetVersion)
     { 
         DbgPrint("[GetWindowsVersion] Using \"RtlGetVersion\"\n"); 
         if (!NT_SUCCESS(pfnRtlGetVersion((PRTL_OSVERSIONINFOW)&osverinfo))) 
             return STATUS_UNSUCCESSFUL;  
     } 
-    //·ñÔò µ÷ÓÃ PsGetVersion º¯ÊıÀ´»ñÈ¡²Ù×÷ÏµÍ³°æ±¾ĞÅÏ¢
+    //å¦åˆ™ è°ƒç”¨ PsGetVersion å‡½æ•°æ¥è·å–æ“ä½œç³»ç»Ÿç‰ˆæœ¬ä¿¡æ¯
     else 
     {
         DbgPrint("[GetWindowsVersion] Using \"PsGetVersion\"\n");
@@ -32,12 +32,12 @@ NTSTATUS GetWindowsVersion()
             return STATUS_UNSUCCESSFUL; 
     }
 
-    //´òÓ¡²Ù×÷ÏµÍ³°æ±¾ĞÅÏ¢
+    //æ‰“å°æ“ä½œç³»ç»Ÿç‰ˆæœ¬ä¿¡æ¯
     DbgPrint("[GetWindowsVersion] OSVersion NT %d.%d:%d sp%d.%d\n", 
         osverinfo.dwMajorVersion, osverinfo.dwMinorVersion, osverinfo.dwBuildNumber, 
         osverinfo.wServicePackMajor, osverinfo.wServicePackMinor); 
 
-    //±£´æ²Ù×÷ÏµÍ³°æ±¾µ½ È«¾Ö±äÁ¿ g_WindowsVersion
+    //ä¿å­˜æ“ä½œç³»ç»Ÿç‰ˆæœ¬åˆ° å…¨å±€å˜é‡ g_WindowsVersion
     //5.0 = 2k
     if (osverinfo.dwMajorVersion == 5 && osverinfo.dwMinorVersion == 0) 
     {
@@ -71,7 +71,7 @@ NTSTATUS GetWindowsVersion()
         g_WindowsVersion= WINDOWS_VERSION_7;
     }
 
-    //±£´æ²Ù×÷ÏµÍ³µÄBuild Numberµ½È«¾Ö±äÁ¿g_WindowsBuildNumber
+    //ä¿å­˜æ“ä½œç³»ç»Ÿçš„Build Numberåˆ°å…¨å±€å˜é‡g_WindowsBuildNumber
     g_WindowsBuildNumber=osverinfo.dwBuildNumber;
 
     return STATUS_SUCCESS;

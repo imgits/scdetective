@@ -73,8 +73,8 @@ ULONG g_EJOB_ProcessListHead;
 
 //
 // KPCR
-// FS¼Ä´æÆ÷Ö¸ÏòKPCR(Kernel's Processor Control Region)½á¹¹
-// FS:[0x120]´¦¾ÍÊÇKPRCB£¨Kernel's Processor Cotrol Block£©½á¹¹
+// FSå¯„å­˜å™¨æŒ‡å‘KPCR(Kernel's Processor Control Region)ç»“æ„
+// FS:[0x120]å¤„å°±æ˜¯KPRCBï¼ˆKernel's Processor Cotrol Blockï¼‰ç»“æ„
 //
 ULONG offset_kpcr_IdleThread;
 

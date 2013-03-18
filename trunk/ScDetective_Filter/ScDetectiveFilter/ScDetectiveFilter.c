@@ -300,7 +300,7 @@ DirControlCompletion(IN PDEVICE_OBJECT DeviceObject, IN PIRP Irp, IN PVOID Conte
 {
     //if (Irp->PendingReturned) IoMarkIrpPending(Irp);
     KeSetEvent((PKEVENT)Context, IO_NO_INCREMENT, FALSE);
-    return STATUS_MORE_PROCESSING_REQUIRED;	//×¢£º±ØÐë·µ»ØÕâ¸öÖµ
+    return STATUS_MORE_PROCESSING_REQUIRED;	//æ³¨ï¼šå¿…é¡»è¿”å›žè¿™ä¸ªå€¼
 }
 
 NTSTATUS ScfsDirectoryControl(
@@ -463,7 +463,7 @@ NTSTATUS DriverEntry(
 
     InitFastIo(DriverObject);
 
-    // °ó¶¨ C:\ Éè±¸
+    // ç»‘å®š C:\ è®¾å¤‡
     RtlInitUnicodeString(&NameString, L"\\DosDevices\\C:\\");
 
     if (!NT_SUCCESS(status = AttachToDiskDevice(

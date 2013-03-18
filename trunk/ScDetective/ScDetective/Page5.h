@@ -3,21 +3,21 @@
 #ifndef _PAGE5_H_
 #define _PAGE5_H_
 
-// CPage5 ¶Ô»°¿ò
+// CPage5 å¯¹è¯æ¡†
 
 class CPage5 : public CDialog
 {
 	DECLARE_DYNAMIC(CPage5)
 
 public:
-	CPage5(CWnd* pParent = NULL);   // ±ê×¼¹¹Ôìº¯Êı
+	CPage5(CWnd* pParent = NULL);   // æ ‡å‡†æ„é€ å‡½æ•°
 	virtual ~CPage5();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_PAGE_DRIVEROBJECT };
 
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
 	DECLARE_MESSAGE_MAP()
 public:
